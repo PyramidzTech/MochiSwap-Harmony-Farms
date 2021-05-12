@@ -38,10 +38,10 @@ const EarnAssetCard = () => {
           <Heading color="contrast" scale="lg">
             Earn
           </Heading>
-          <CardMidContent color="invertedContrast">{assets}</CardMidContent>
+          <CardMidContent color="invertedContrast">hMOCHI</CardMidContent>
           <Flex justifyContent="space-between">
             <Heading color="contrast" scale="lg">
-              in Farms and Pools!
+              in Farms and SOLO Pools!
             </Heading>
             <ArrowForwardIcon mt={30} color="primary" />
           </Flex>

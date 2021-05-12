@@ -187,9 +187,7 @@ export const usePriceBnbBusd = (): BigNumber => {
 export const usePriceCakeBusd = (): BigNumber => {
   const cakeBnbFarm = useFarmFromPid(4)
   const bnbBusdPrice = usePriceBnbBusd()
-
   const cakeBusdPrice = cakeBnbFarm.tokenPriceVsQuote ? bnbBusdPrice.times(cakeBnbFarm.tokenPriceVsQuote) : BIG_ZERO
-
   return cakeBusdPrice
 }
 
@@ -203,20 +201,110 @@ export const useTotalValue = (): BigNumber => {
     const farm = farmsLP[i]
     if (farm.lpTotalInQuoteToken) {
       let val;
+      if (farm.pid === 0) {
+        val = new BigNumber(2).times(farm.quoteTokenAmount)
+      }
+      if (farm.pid === 6) {
+        val = new BigNumber(2).times(farm.quoteTokenAmount)
+      }
       if (farm.pid === 1) {
-        val = (bnbPrice.times(farm.lpTotalInQuoteToken));
-      }else if (farm.pid === 2) {
-        val = (cakePrice.times(farm.lpTotalInQuoteToken));
-      }else{
-        val = (farm.lpTotalInQuoteToken);
+        // console.log('test', farm.token, farm.quoteToken, farm.lpTotalInQuoteToken, farm.quoteToken,  new BigNumber(farm.lpTotalInQuoteToken).times(farm.tokenPriceVsQuote).toString());
+        // console.log('asdaf', new BigNumber(.116).times(farm.tokenPriceVsQuote).toString(), farm.tokenAmount)
+        // console.log('yo', new BigNumber(farm.lpTotalInQuoteToken).div(new BigNumber(farm.tokenAmount)).toString())
+        // num = cakePrice.times(farm.tokenAmount)
+        const price = cakePrice.times(farm.tokenPriceVsQuote)
+        val = price.times(farm.tokenAmount).times(2)
+      }
+      if (farm.pid === 13) {
+        val = new BigNumber(2).times(farm.quoteTokenAmount)
+      }
+      if (farm.pid === 14) {
+        val = new BigNumber(2).times(farm.quoteTokenAmount)
+      }
+      if (farm.pid === 15) {
+        val = cakePrice.times(farm.tokenAmount).times(2)
+      }
+      if (farm.pid === 9) {
+        val = cakePrice.times(farm.tokenAmount).times(2)
+      }
+      if (farm.pid === 10) {
+        const price = cakePrice.times(farm.tokenPriceVsQuote)
+        val = price.times(farm.tokenAmount).times(2)
+      }
+      if (farm.pid === 11) {
+        const price = cakePrice.times(farm.tokenPriceVsQuote)
+        val = price.times(farm.tokenAmount).times(2)
+      }
+      if (farm.pid === 7) {
+        const price = cakePrice.times(farm.tokenPriceVsQuote)
+        val = price.times(farm.tokenAmount).times(2)
+      }
+      if (farm.pid === 2) {
+        const price = cakePrice.times(farm.tokenPriceVsQuote)
+        val = price.times(farm.tokenAmount).times(2)
+      }
+      if (farm.pid === 3) {
+        const price = cakePrice.times(farm.tokenPriceVsQuote)
+        val = price.times(farm.tokenAmount).times(2)
+      }
+      if (farm.pid === 4) {
+        val = new BigNumber(2).times(farm.quoteTokenAmount)
+      }
+      if (farm.pid === 5) {
+        const price = cakePrice.times(farm.tokenPriceVsQuote)
+        val = price.times(farm.tokenAmount).times(2)
+      }
+      if (farm.pid === 8) {
+        const price = cakePrice.times(farm.tokenPriceVsQuote)
+        val = price.times(farm.tokenAmount).times(2)
+      }
+      if (farm.pid === 18) {
+        const price = cakePrice.times(farm.tokenPriceVsQuote)
+        val = price.times(farm.tokenAmount).times(2)
+      }
+      if (farm.pid === 17) {
+        const price = cakePrice.times(farm.tokenPriceVsQuote)
+        val = price.times(farm.tokenAmount).times(2)
+      }
+      if (farm.pid === 16) {
+        const price = cakePrice.times(farm.tokenPriceVsQuote)
+        val = price.times(farm.tokenAmount).times(2)
+      }
+      if (farm.pid === 19) {
+        const price = cakePrice.times(farm.tokenPriceVsQuote)
+        val = price.times(farm.tokenAmount).times(2)
+      }
+      // if (farm.pid === 21) {
+      //   const price = cakePrice.times(farm.tokenPriceVsQuote)
+      //   val = price.times(farm.tokenAmount).times(2)
+      // }
+      // if (farm.pid === 20) {
+      //   const price = cakePrice.times(farm.tokenPriceVsQuote)
+      //   val = price.times(farm.tokenAmount).times(2)
+      // }
+      if (farm.pid === 23) {
+        const price = cakePrice.times(farm.tokenPriceVsQuote)
+        val = price.times(farm.tokenAmount).times(2)
+      }
+      if (farm.pid === 22) {
+        const price = cakePrice.times(farm.tokenPriceVsQuote)
+        val = price.times(farm.tokenAmount).times(2)
+      }
+      if (farm.pid === 24) {
+        const price = cakePrice.times(farm.tokenPriceVsQuote)
+        val = price.times(farm.tokenAmount).times(2)
       }
       // exclude solo pools tlv error
-      if(farm.pid === 20){
+      if(farm.pid === 1222){
         val = 0;
       }
-      value = value.plus(val);
+      if(val){
+        console.log(val)
+        value = value.plus(new BigNumber(val));
+      }
     }
   }
+  console.log(value.toString())
   return value;
 }
 

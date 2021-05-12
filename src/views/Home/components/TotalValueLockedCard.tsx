@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import BigNumber from 'bignumber.js'
+import { getBalanceNumber, getFullDisplayBalance, getDecimalAmount } from 'utils/formatBalance'
 import { Card, CardBody, Heading, Skeleton, Text } from '@pancakeswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { useTotalValue } from '../../../state/hooks'
@@ -15,7 +17,9 @@ const TotalValueLockedCard = () => {
   const { t } = useTranslation()
   // const data = useGetStats()
   // const tvl = data ? data.total_value_locked_all.toLocaleString('en-US', { maximumFractionDigits: 0 }) : null
-  const totalValue = useTotalValue();
+  let totalValue = useTotalValue();
+  totalValue = totalValue.decimalPlaces(0)
+  const commas = totalValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   return (
     <StyledTotalValueLockedCard>
       <CardBody>
@@ -24,8 +28,8 @@ const TotalValueLockedCard = () => {
         </Heading>
         {totalValue ? (
           <>
-            <Heading scale="xl">{`$${totalValue}`}</Heading>
-            <Text color="textSubtle">{t('Across all LPs and Syrup Pools')}</Text>
+            <Heading scale="xl">{`$${commas}`}</Heading>
+            <Text color="textSubtle">{t('Across all Farm LP and ONEMOON Locked LP')}</Text>
           </>
         ) : (
           <Skeleton height={66} />

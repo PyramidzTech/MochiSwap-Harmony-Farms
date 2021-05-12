@@ -11,8 +11,8 @@ const farms: FarmConfig[] = [
     lpAddresses: {
       1666600000: '0x4b2343Ccf2F882942514084F29Bd92950752aab3',
     },
-    token: tokens.bnb,
-    quoteToken: tokens.bnb,
+    token: tokens.busd,
+    quoteToken: tokens.busd,
   },
 
   {
@@ -21,8 +21,8 @@ const farms: FarmConfig[] = [
     lpAddresses: {
       1666600000: '0x1699F115Ee278e4681EF1867113054fF05262ab6',
     },
-    token: tokens.bnb,
-    quoteToken: tokens.bnb,
+    token: tokens.usdt,
+    quoteToken: tokens.usdt,
   },
 
   {
@@ -31,8 +31,8 @@ const farms: FarmConfig[] = [
     lpAddresses: {
       1666600000: '0xf141245E0aed6F7E456059aa834AF89Ac9339136',
     },
-    token: tokens.bnb,
-    quoteToken: tokens.bnb,
+    token: tokens.one,
+    quoteToken: tokens.bmochi,
   },
 
   {
@@ -41,8 +41,8 @@ const farms: FarmConfig[] = [
     lpAddresses: {
       1666600000: '0x0e1521cA9e659ca9d9ff53554e5b8E27f57AD47e',
     },
-    token: tokens.cake,
-    quoteToken: tokens.busd,
+    token: tokens.usdc,
+    quoteToken: tokens.usdc,
   },
 
   {
@@ -62,7 +62,7 @@ const farms: FarmConfig[] = [
       1666600000: '0xC313Fe99442e3B36793ad4B2B870c7Bed3fCd1de',
     },
     token: tokens.cake,
-    quoteToken: tokens.busd,
+    quoteToken: tokens.eth,
   },
 
   {
@@ -81,8 +81,8 @@ const farms: FarmConfig[] = [
     lpAddresses: {
       1666600000: '0x52dcF8bC28DD789daEd9C30542a32e57f72cf15D',
     },
-    token: tokens.bnb,
-    quoteToken: tokens.cake,
+    token: tokens.sushi,
+    quoteToken: tokens.bmochi,
   },
 
   {
@@ -91,8 +91,8 @@ const farms: FarmConfig[] = [
     lpAddresses: {
       1666600000: '0x99704766507B87781b8aF16299E319D1b8324C0D',
     },
-    token: tokens.bnb,
-    quoteToken: tokens.cake,
+    token: tokens.sushi,
+    quoteToken: tokens.one,
   },
   
   {
@@ -101,8 +101,8 @@ const farms: FarmConfig[] = [
     lpAddresses: {
       1666600000: '0x2D0Bb96706761A1b13581C9ddD5d471240EF2252',
     },
-    token: tokens.bnb,
-    quoteToken: tokens.cake,
+    token: tokens.bmochi,
+    quoteToken: tokens.bmochi,
   },
 
   {
@@ -111,8 +111,8 @@ const farms: FarmConfig[] = [
     lpAddresses: {
       1666600000: '0x77f6998A0eB09a5ba24d3B8c6e747Cc1A0Fc6CA5',
     },
-    token: tokens.bnb,
-    quoteToken: tokens.cake,
+    token: tokens.bmochi,
+    quoteToken: tokens.bmochi,
   },
   
   {
@@ -124,7 +124,7 @@ const farms: FarmConfig[] = [
     token: tokens.bnb,
     quoteToken: tokens.cake,
   },
-
+  // do not touch used to calculate busd
   {
     pid: 4,
     lpSymbol: 'BUSD-ONE',
@@ -141,8 +141,8 @@ const farms: FarmConfig[] = [
     lpAddresses: {
       1666600000: '0x843011c56A62283c18D7355E2e3851022aD2eC38',
     },
-    token: tokens.one,
-    quoteToken: tokens.busd,
+    token: tokens.cake,
+    quoteToken: tokens.cake,
   },
 
   {
@@ -151,8 +151,8 @@ const farms: FarmConfig[] = [
     lpAddresses: {
       1666600000: '0x22215262804b55565b2485415A82eD98E06Bbf30',
     },
-    token: tokens.one,
-    quoteToken: tokens.busd,
+    token: tokens.apesox,
+    quoteToken: tokens.cake,
   },
 
   {
@@ -161,8 +161,8 @@ const farms: FarmConfig[] = [
     lpAddresses: {
       1666600000: '0xCcc4C08E6b998fF4bDBAB0bBd1F51721Ca9719ae',
     },
-    token: tokens.one,
-    quoteToken: tokens.busd,
+    token: tokens.cake,
+    quoteToken: tokens.cake,
   },
 
   {
@@ -171,8 +171,8 @@ const farms: FarmConfig[] = [
     lpAddresses: {
       1666600000: '0x137B224eDcF62dF3A79C381f8009DCac03e60E03',
     },
-    token: tokens.one,
-    quoteToken: tokens.busd,
+    token: tokens.cake,
+    quoteToken: tokens.cake,
   },
 
   {
@@ -181,8 +181,8 @@ const farms: FarmConfig[] = [
     lpAddresses: {
       1666600000: '0x1B868f8b8490EF64878Baec00b680eb3e89285DA',
     },
-    token: tokens.one,
-    quoteToken: tokens.busd,
+    token: tokens.cake,
+    quoteToken: tokens.cake,
   },
 
 
@@ -193,7 +193,7 @@ const farms: FarmConfig[] = [
       1666600000: '0x4161A7F652E239e1479B00B593f72B35D909609c',
     },
     token: tokens.one,
-    quoteToken: tokens.busd,
+    quoteToken: tokens.one,
   },
 
 
@@ -203,8 +203,8 @@ const farms: FarmConfig[] = [
     lpAddresses: {
       1666600000: '0xda73f5C25C0D644Afd20dA5535558956B192b262',
     },
-    token: tokens.one,
-    quoteToken: tokens.busd,
+    token: tokens.bmochi,
+    quoteToken: tokens.bmochi,
   },
 
   {
@@ -213,8 +213,8 @@ const farms: FarmConfig[] = [
     lpAddresses: {
       1666600000: '0x0dD740Db89B9fDA3Baadf7396DdAD702b6E8D6f5',
     },
-    token: tokens.one,
-    quoteToken: tokens.busd,
+    token: tokens.cake,
+    quoteToken: tokens.cake,
   },
 
   {
@@ -224,7 +224,7 @@ const farms: FarmConfig[] = [
       1666600000: '0xbDDdc287317999B10728D32cC2E38555C431d5de',
     },
     token: tokens.one,
-    quoteToken: tokens.busd,
+    quoteToken: tokens.one,
   },
 
 
@@ -234,8 +234,8 @@ const farms: FarmConfig[] = [
     lpAddresses: {
       1666600000: '0x66609946EAcEc172700D40A39eF60088862a2dce',
     },
-    token: tokens.one,
-    quoteToken: tokens.busd,
+    token: tokens.cake,
+    quoteToken: tokens.cake,
   },
 
   {
@@ -244,8 +244,8 @@ const farms: FarmConfig[] = [
     lpAddresses: {
       1666600000: '0x4aA4B306bFEcE9025d65d3C88d81349D19f5D67C',
     },
-    token: tokens.one,
-    quoteToken: tokens.busd,
+    token: tokens.cake,
+    quoteToken: tokens.cake,
   },
 
 

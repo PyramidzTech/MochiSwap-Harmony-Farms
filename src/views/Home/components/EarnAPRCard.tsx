@@ -52,23 +52,49 @@ const EarnAPRCard = () => {
 
   return (
     <StyledFarmStakingCard>
-      <NavLink exact activeClassName="active" to="/farms" id="farm-apr-cta">
+      <NavLink exact activeClassName="active" to="/" id="lottery-pot-cta">
         <CardBody>
           <Heading color="contrast" scale="lg">
-            Earn up to
+            {t('New SOLO Pools')}
           </Heading>
-          <CardMidContent color="#7645d9">
-            {highestApr ? `${highestApr}% ${t('APR')}` : <Skeleton animation="pulse" variant="rect" height="44px" />}
-          </CardMidContent>
+          <CardMidContent color="#7645d9">{t('Coming Soon!')}</CardMidContent>
           <Flex justifyContent="space-between">
-            <Heading color="contrast" scale="lg">
-              in Farms
-            </Heading>
+            <Heading color="contrast" scale="lg" />
             <ArrowForwardIcon mt={30} color="primary" />
           </Flex>
         </CardBody>
       </NavLink>
     </StyledFarmStakingCard>
+    // <StyledFarmStakingCard>
+    //   <NavLink exact activeClassName="active" target="_blank" to="/farms" id="farm-apr-cta">
+    //     <CardBody>
+    //     <NavLink exact activeClassName="active" to="/" id="lottery-pot-cta">
+    //     <CardBody>
+    //       <Heading color="contrast" scale="lg">
+    //         {t('NFTs and Games')}
+    //       </Heading>
+    //       <CardMidContent color="#7645d9">{t('Coming Soon!')}</CardMidContent>
+    //       <Flex justifyContent="space-between">
+    //         <Heading color="contrast" scale="lg" />
+    //         <ArrowForwardIcon mt={30} color="primary" />
+    //       </Flex>
+    //     </CardBody>
+    //   </NavLink>
+    //       {/* <Heading color="contrast" scale="lg">
+    //         Earn up to
+    //       </Heading>
+    //       <CardMidContent color="#7645d9">
+    //         {highestApr ? `${highestApr}% ${t('APR')}` : <Skeleton animation="pulse" variant="rect" height="44px" />}
+    //       </CardMidContent>
+    //       <Flex justifyContent="space-between">
+    //         <Heading color="contrast" scale="lg">
+    //           in Farms
+    //         </Heading>
+    //         <ArrowForwardIcon mt={30} color="primary" />
+    //       </Flex> */}
+    //     </CardBody>
+    //   </NavLink>
+    // </StyledFarmStakingCard>
   )
 }
 

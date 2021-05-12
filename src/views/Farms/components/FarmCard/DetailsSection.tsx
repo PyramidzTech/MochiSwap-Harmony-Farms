@@ -29,7 +29,7 @@ const DetailsSection: React.FC<ExpandableSectionProps> = ({
   addLiquidityUrl,
 }) => {
   const { t } = useTranslation()
-
+  console.log('total value', totalValueFormatted.toString())
   return (
     <Wrapper>
       <Flex justifyContent="space-between">

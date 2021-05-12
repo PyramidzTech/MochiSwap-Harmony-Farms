@@ -87,13 +87,13 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, account }
 
   // const totalValueFormatted = new BigNumber(farm.lpTotalInQuoteToken)
   // console.log(totalValueFormatted.toString())
-  console.log('farms', farm.lpSymbol,  farm.tokenPriceVsQuote, new BigNumber(farm.lpTotalInQuoteToken).toString())
+  // console.log('farms', farm.lpSymbol, farm.liquidity.toString(),  farm.tokenPriceVsQuote, new BigNumber(farm.lpTotalInQuoteToken).toString())
   const totalValueFormatted = farm.liquidity
     ? `$${farm.liquidity.toNumber().toLocaleString(undefined, { maximumFractionDigits: 0 })}`
     : '-'
 
   const lpLabel = farm.lpSymbol && farm.lpSymbol.toUpperCase().replace('PANCAKE', '')
-  const earnLabel = farm.dual ? farm.dual.earnLabel : 'CAKE'
+  const earnLabel = farm.dual ? farm.dual.earnLabel : 'HMOCHI'
 
   const farmAPR = farm.apr && farm.apr.toLocaleString('en-US', { maximumFractionDigits: 2 })
 

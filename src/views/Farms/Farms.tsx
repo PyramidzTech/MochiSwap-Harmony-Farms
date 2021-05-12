@@ -1,3 +1,4 @@
+
 import React, { useEffect, useCallback, useState, useMemo, useRef } from 'react'
 import { Route, useRouteMatch, useLocation } from 'react-router-dom'
 import { useAppDispatch } from 'state'
@@ -7,8 +8,8 @@ import { Image, Heading, RowType, Toggle, Text } from '@pancakeswap/uikit'
 import styled from 'styled-components'
 import FlexLayout from 'components/layout/Flex'
 import Page from 'components/layout/Page'
-import { useFarms, usePriceCakeBusd, useGetApiPrices } from 'state/hooks'
 import useRefresh from 'hooks/useRefresh'
+import { useFarms, usePriceCakeBusd, useGetApiPrices, usePriceBnbBusd } from 'state/hooks'
 import { fetchFarmUserDataAsync } from 'state/actions'
 import usePersistState from 'hooks/usePersistState'
 import { Farm } from 'state/types'
@@ -109,8 +110,9 @@ const Farms: React.FC = () => {
   const { pathname } = useLocation()
   const { t } = useTranslation()
   const { data: farmsLP, userDataLoaded } = useFarms()
-  const cakePrice = usePriceCakeBusd()
   const [query, setQuery] = useState('')
+  const cakePrice = usePriceCakeBusd()
+  const bnbPrice = usePriceBnbBusd()
   const [viewMode, setViewMode] = usePersistState(ViewMode.TABLE, 'pancake_farm_view')
   const { account } = useWeb3React()
   const [sortOption, setSortOption] = useState('hot')
@@ -127,7 +129,6 @@ const Farms: React.FC = () => {
   const isArchived = pathname.includes('archived')
   const isInactive = pathname.includes('history')
   const isActive = !isInactive && !isArchived
-
   // Users with no wallet connected should see 0 as Earned amount
   // Connected users should see loading indicator until first userData has loaded
   const userDataReady = !account || (!!account && userDataLoaded)
@@ -175,7 +176,108 @@ const Farms: React.FC = () => {
         }
 
         const quoteTokenPriceUsd = prices[getAddress(farm.quoteToken.address).toLowerCase()]
-        const totalLiquidity = new BigNumber(farm.lpTotalInQuoteToken).times(quoteTokenPriceUsd)
+
+        // manually assign liq and apr
+        let num = cakePrice
+        if (farm.pid === 0) {
+          num = new BigNumber(2).times(farm.quoteTokenAmount)
+        }
+        if (farm.pid === 6) {
+          num = new BigNumber(2).times(farm.quoteTokenAmount)
+        }
+        if (farm.pid === 1) {
+          // console.log('test', farm.token, farm.quoteToken, farm.lpTotalInQuoteToken, farm.quoteToken,  new BigNumber(farm.lpTotalInQuoteToken).times(farm.tokenPriceVsQuote).toString());
+          // console.log('asdaf', new BigNumber(.116).times(farm.tokenPriceVsQuote).toString(), farm.tokenAmount)
+          // console.log('yo', new BigNumber(farm.lpTotalInQuoteToken).div(new BigNumber(farm.tokenAmount)).toString())
+          // num = cakePrice.times(farm.tokenAmount)
+          const price = cakePrice.times(farm.tokenPriceVsQuote)
+          num = price.times(farm.tokenAmount).times(2)
+        }
+        if (farm.pid === 13) {
+          num = new BigNumber(2).times(farm.quoteTokenAmount)
+        }
+        if (farm.pid === 14) {
+          num = new BigNumber(2).times(farm.quoteTokenAmount)
+        }
+        if (farm.pid === 15) {
+          num = cakePrice.times(farm.tokenAmount).times(2)
+        }
+        if (farm.pid === 9) {
+          num = cakePrice.times(farm.tokenAmount).times(2)
+        }
+        if (farm.pid === 10) {
+          const price = cakePrice.times(farm.tokenPriceVsQuote)
+          num = price.times(farm.tokenAmount).times(2)
+        }
+        if (farm.pid === 11) {
+          const price = cakePrice.times(farm.tokenPriceVsQuote)
+          num = price.times(farm.tokenAmount).times(2)
+        }
+        if (farm.pid === 7) {
+          const price = cakePrice.times(farm.tokenPriceVsQuote)
+          num = price.times(farm.tokenAmount).times(2)
+        }
+        if (farm.pid === 2) {
+          const price = cakePrice.times(farm.tokenPriceVsQuote)
+          num = price.times(farm.tokenAmount).times(2)
+        }
+        if (farm.pid === 3) {
+          const price = cakePrice.times(farm.tokenPriceVsQuote)
+          num = price.times(farm.tokenAmount).times(2)
+        }
+        if (farm.pid === 4) {
+          num = new BigNumber(2).times(farm.quoteTokenAmount)
+        }
+        if (farm.pid === 5) {
+          const price = cakePrice.times(farm.tokenPriceVsQuote)
+          num = price.times(farm.tokenAmount).times(2)
+        }
+        if (farm.pid === 8) {
+          const price = cakePrice.times(farm.tokenPriceVsQuote)
+          num = price.times(farm.tokenAmount).times(2)
+        }
+        if (farm.pid === 18) {
+          const price = cakePrice.times(farm.tokenPriceVsQuote)
+          num = price.times(farm.tokenAmount).times(2)
+        }
+        if (farm.pid === 17) {
+          const price = cakePrice.times(farm.tokenPriceVsQuote)
+          num = price.times(farm.tokenAmount).times(2)
+        }
+        if (farm.pid === 16) {
+          const price = cakePrice.times(farm.tokenPriceVsQuote)
+          num = price.times(farm.tokenAmount).times(2)
+        }
+        if (farm.pid === 19) {
+          const price = cakePrice.times(farm.tokenPriceVsQuote)
+          num = price.times(farm.tokenAmount).times(2)
+        }
+        if (farm.pid === 21) {
+          const price = cakePrice.times(farm.tokenPriceVsQuote)
+          num = price.times(farm.tokenAmount).times(2)
+          console.log('solo', num.toString(), farm.lpTotalSupply, farm.tokenAmount)
+        }
+        if (farm.pid === 20) {
+          const price = cakePrice.times(farm.tokenPriceVsQuote)
+          num = price.times(farm.tokenAmount).times(2)
+          console.log('solo', num.toString(), farm.lpTotalSupply, farm.tokenAmount)
+        }
+        if (farm.pid === 23) {
+          const price = cakePrice.times(farm.tokenPriceVsQuote)
+          num = price.times(farm.tokenAmount).times(2)
+        }
+        if (farm.pid === 22) {
+          const price = cakePrice.times(farm.tokenPriceVsQuote)
+          num = price.times(farm.tokenAmount).times(2)
+        }
+        if (farm.pid === 24) {
+          const price = cakePrice.times(farm.tokenPriceVsQuote)
+          num = price.times(farm.tokenAmount).times(2)
+        }
+
+
+        // const totalLiquidity = new BigNumber(farm.lpTotalInQuoteToken).times(num)
+        const totalLiquidity = num
         const apr = isActive ? getFarmApr(farm.poolWeight, cakePrice, totalLiquidity) : 0
 
         return { ...farm, apr, liquidity: totalLiquidity }

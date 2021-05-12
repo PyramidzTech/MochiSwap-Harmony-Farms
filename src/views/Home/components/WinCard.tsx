@@ -32,7 +32,7 @@ const WinCard = () => {
           <Heading color="contrast" scale="lg">
             {t('NFTs and Games')}
           </Heading>
-          <CardMidContent color="#7645d9">{t('Coming Soon')}</CardMidContent>
+          <CardMidContent color="#7645d9">{t('Coming Soon!')}</CardMidContent>
           <Flex justifyContent="space-between">
             <Heading color="contrast" scale="lg" />
             <ArrowForwardIcon mt={30} color="primary" />
