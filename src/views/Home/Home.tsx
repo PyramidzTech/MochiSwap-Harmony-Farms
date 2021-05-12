@@ -8,12 +8,14 @@ import LotteryCard from 'views/Home/components/LotteryCard'
 import CakeStats from 'views/Home/components/CakeStats'
 import TotalValueLockedCard from 'views/Home/components/TotalValueLockedCard'
 import EarnAPRCard from 'views/Home/components/EarnAPRCard'
+import TwitterCard from 'views/Home/components/TwitterCard'
 import EarnAssetCard from 'views/Home/components/EarnAssetCard'
 import WinCard from 'views/Home/components/WinCard'
 
 const Hero = styled.div`
   align-items: center;
-  background-image: url('/images/pan-bg-mobile.svg');
+  background-image: url('/images/pan-bg-mobile4444.svg');
+  background-size: 150px;
   background-repeat: no-repeat;
   background-position: top center;
   display: flex;
@@ -25,7 +27,7 @@ const Hero = styled.div`
   text-align: center;
 
   ${({ theme }) => theme.mediaQueries.lg} {
-    background-image: url('/images/pan-bg2.svg'), url('/images/pan-bg.svg');
+    background-image: url('/images/2logos.png'), url('/images/pan-bg333.svg');
     background-position: left center, right center;
     height: 165px;
     padding-top: 0;
@@ -90,7 +92,7 @@ const Home: React.FC = () => {
       <div>
         <Cards>
           <FarmStakingCard />
-          <LotteryCard />
+          <TwitterCard />
         </Cards>
         <CTACards>
           <EarnAPRCard />

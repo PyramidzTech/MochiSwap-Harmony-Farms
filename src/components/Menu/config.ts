@@ -12,19 +12,11 @@ const config: MenuEntry[] = [
     items: [
       {
         label: 'Exchange',
-        href: 'https://exchange.pancakeswap.finance/#/swap',
+        href: 'https://one.mochiswap.io/',
       },
       {
         label: 'Liquidity',
-        href: 'https://exchange.pancakeswap.finance/#/pool',
-      },
-      {
-        label: 'LP Migration',
-        href: 'https://v1exchange.pancakeswap.finance/#/migrate',
-      },
-      {
-        label: 'V1 Liquidity (Old)',
-        href: 'https://v1exchange.pancakeswap.finance/#/pool',
+        href: 'https://one.mochiswap.io/#/pool',
       },
     ],
   },
@@ -34,108 +26,71 @@ const config: MenuEntry[] = [
     href: '/farms',
   },
   {
-    label: 'Pools',
-    icon: 'PoolIcon',
-    href: '/pools',
-  },
-  {
-    label: 'Prediction',
-    icon: 'PredictionsIcon',
-    href: '/prediction',
-    status: {
-      text: 'BETA',
-      color: 'warning',
-    },
-  },
-  {
-    label: 'Lottery',
-    icon: 'TicketIcon',
-    href: '/lottery',
-  },
-  {
-    label: 'Collectibles',
-    icon: 'NftIcon',
-    href: '/collectibles',
-  },
-  {
-    label: 'Team Battle',
-    icon: 'TeamBattleIcon',
-    href: '/competition',
-  },
-  {
-    label: 'Teams & Profile',
-    icon: 'GroupsIcon',
-    items: [
-      {
-        label: 'Leaderboard',
-        href: '/teams',
-      },
-      {
-        label: 'Task Center',
-        href: '/profile/tasks',
-      },
-      {
-        label: 'Your Profile',
-        href: '/profile',
-      },
-    ],
-  },
-  {
-    label: 'Info',
+    label: 'Analytics',
     icon: 'InfoIcon',
     items: [
       {
         label: 'Overview',
-        href: 'https://pancakeswap.info',
+        href: 'https://analytics.mochiswap.io',
       },
       {
         label: 'Tokens',
-        href: 'https://pancakeswap.info/tokens',
+        href: 'https://analytics.mochiswap.io/tokens',
       },
       {
         label: 'Pairs',
-        href: 'https://pancakeswap.info/pairs',
+        href: 'https://analytics.mochiswap.io/Pairs',
       },
       {
         label: 'Accounts',
-        href: 'https://pancakeswap.info/accounts',
+        href: 'https://analytics.mochiswap.io/Accounts',
       },
+      // {
+      //   label: 'CoinMarketCap',
+      //   href: 'https://coinmarketcap.com/currencies/mochiswap/',
+      // },
     ],
   },
   {
-    label: 'IFO',
-    icon: 'IfoIcon',
-    href: '/ifo',
-  },
-  {
-    label: 'More',
-    icon: 'MoreIcon',
+    label: 'Features',
+    icon: 'TicketIcon',
     items: [
       {
-        label: 'Contact',
-        href: 'https://docs.pancakeswap.finance/contact-us',
+        label: 'MultiSig Fund',
+        href: 'https://mochiswap.medium.com/introducing-multi-sig-on-mochiswap-bd5a7af5c278',
       },
       {
-        label: 'Voting',
-        href: 'https://voting.pancakeswap.finance',
-      },
-      {
-        label: 'Github',
-        href: 'https://github.com/pancakeswap',
-      },
-      {
-        label: 'Docs',
-        href: 'https://docs.pancakeswap.finance',
-      },
-      {
-        label: 'Blog',
-        href: 'https://pancakeswap.medium.com',
-      },
-      {
-        label: 'Merch',
-        href: 'https://pancakeswap.creator-spring.com/',
-      },
+        label: 'Community Proposals',
+        href: 'https://docs.mochiswap.io/governance/proposals-and-voting',
+      }
+      // {
+      //   label: 'CoinMarketCap',
+      //   href: 'https://coinmarketcap.com/currencies/mochiswap/',
+      // },
     ],
+  },
+  {
+    label: 'Info',
+    icon: 'GroupsIcon',
+    items: [
+      {
+        label: 'GitHub',
+        href: 'https://github.com/mochiswap',
+      },
+      {
+        label: 'BSC Mochi Mining',
+        href: 'https://farms.mochiswap.io',
+      },
+      // {
+      //   label: 'CoinMarketCap',
+      //   href: 'https://coinmarketcap.com/currencies/mochiswap/',
+      // },
+    ],
+  },
+  {
+    label: 'Docs',
+    icon: 'TicketIcon',
+    href: 'https://docs.mochiswap.io/',
   },
 ]
 

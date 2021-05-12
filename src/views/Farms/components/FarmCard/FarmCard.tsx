@@ -85,6 +85,9 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, account }
   // NAR-CAKE LP. The images should be cake-bnb.svg, link-bnb.svg, nar-cake.svg
   const farmImage = farm.lpSymbol.split(' ')[0].toLocaleLowerCase()
 
+  // const totalValueFormatted = new BigNumber(farm.lpTotalInQuoteToken)
+  // console.log(totalValueFormatted.toString())
+  console.log('farms', farm.lpSymbol,  farm.tokenPriceVsQuote, new BigNumber(farm.lpTotalInQuoteToken).toString())
   const totalValueFormatted = farm.liquidity
     ? `$${farm.liquidity.toNumber().toLocaleString(undefined, { maximumFractionDigits: 0 })}`
     : '-'
@@ -140,9 +143,9 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, account }
       <ExpandingWrapper expanded={showExpandableSection}>
         <DetailsSection
           removed={removed}
-          bscScanAddress={`https://bscscan.com/address/${farm.lpAddresses[process.env.REACT_APP_CHAIN_ID]}`}
-          infoAddress={`https://pancakeswap.info/pair/${lpAddress}`}
-          totalValueFormatted={totalValueFormatted}
+          bscScanAddress={`https://explorer.harmony.one/#/address/${farm.lpAddresses[process.env.REACT_APP_CHAIN_ID]}`}
+          infoAddress={`https://analytics.mochiswap.io/pair/${lpAddress}`}
+          totalValueFormatted={totalValueFormatted.toString()}
           lpLabel={lpLabel}
           addLiquidityUrl={addLiquidityUrl}
         />

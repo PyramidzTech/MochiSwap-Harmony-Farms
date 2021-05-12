@@ -147,15 +147,15 @@ const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({
     tokenAddress: token.address,
   })
   const lpAddress = farm.lpAddresses[process.env.REACT_APP_CHAIN_ID]
-  const bsc = `https://bscscan.com/address/${lpAddress}`
-  const info = `https://pancakeswap.info/pair/${lpAddress}`
+  const bsc = `https://explorer.harmony.one/#/address/${lpAddress}`
+  const info = `https://analytics.mochiswap.io/pair/${lpAddress}`
 
   return (
     <Container expanded={expanded}>
       <InfoContainer>
         {isActive && (
           <StakeContainer>
-            <StyledLinkExternal href={`https://exchange.pancakeswap.finance/#/add/${liquidityUrlPathParts}`}>
+            <StyledLinkExternal href={`https://one.mochiswap.io/#/add/${liquidityUrlPathParts}`}>
               {t(`Get ${lpLabel}`, { name: lpLabel })}
             </StyledLinkExternal>
           </StakeContainer>

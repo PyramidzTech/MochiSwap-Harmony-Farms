@@ -28,12 +28,12 @@ const CardMidContent = styled(Heading).attrs({ scale: 'xl' })`
 const activeNonCakePools = pools.filter((pool) => !pool.isFinished && !pool.earningToken.symbol.includes('CAKE'))
 const latestPools: Pool[] = orderBy(activeNonCakePools, ['sortOrder', 'pid'], ['desc', 'desc']).slice(0, 3)
 // Always include CAKE
-const assets = ['CAKE', ...latestPools.map((pool) => pool.earningToken.symbol)].join(', ')
+const assets = ['hMOCHI', ...latestPools.map((pool) => pool.earningToken.symbol)].join(', ')
 
 const EarnAssetCard = () => {
   return (
     <StyledFarmStakingCard>
-      <NavLink exact activeClassName="active" to="/syrup" id="pool-cta">
+      <NavLink exact activeClassName="active" to="/farms" id="pool-cta">
         <CardBody>
           <Heading color="contrast" scale="lg">
             Earn
@@ -41,7 +41,7 @@ const EarnAssetCard = () => {
           <CardMidContent color="invertedContrast">{assets}</CardMidContent>
           <Flex justifyContent="space-between">
             <Heading color="contrast" scale="lg">
-              in Pools
+              in Farms and Pools!
             </Heading>
             <ArrowForwardIcon mt={30} color="primary" />
           </Flex>

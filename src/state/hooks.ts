@@ -180,17 +180,44 @@ export const useGetApiPrice = (address: string) => {
 }
 
 export const usePriceBnbBusd = (): BigNumber => {
-  const bnbBusdFarm = useFarmFromPid(2)
+  const bnbBusdFarm = useFarmFromPid(3)
   return bnbBusdFarm.tokenPriceVsQuote ? new BigNumber(1).div(bnbBusdFarm.tokenPriceVsQuote) : BIG_ZERO
 }
 
 export const usePriceCakeBusd = (): BigNumber => {
-  const cakeBnbFarm = useFarmFromPid(1)
+  const cakeBnbFarm = useFarmFromPid(4)
   const bnbBusdPrice = usePriceBnbBusd()
 
   const cakeBusdPrice = cakeBnbFarm.tokenPriceVsQuote ? bnbBusdPrice.times(cakeBnbFarm.tokenPriceVsQuote) : BIG_ZERO
 
   return cakeBusdPrice
+}
+
+export const useTotalValue = (): BigNumber => {
+  const { data: farmsLP } = useFarms()
+  const bnbPrice = usePriceBnbBusd();
+  const cakePrice = usePriceCakeBusd();
+
+  let value = new BigNumber(0);
+  for (let i = 0; i < farmsLP.length; i++) {
+    const farm = farmsLP[i]
+    if (farm.lpTotalInQuoteToken) {
+      let val;
+      if (farm.pid === 1) {
+        val = (bnbPrice.times(farm.lpTotalInQuoteToken));
+      }else if (farm.pid === 2) {
+        val = (cakePrice.times(farm.lpTotalInQuoteToken));
+      }else{
+        val = (farm.lpTotalInQuoteToken);
+      }
+      // exclude solo pools tlv error
+      if(farm.pid === 20){
+        val = 0;
+      }
+      value = value.plus(val);
+    }
+  }
+  return value;
 }
 
 // Block

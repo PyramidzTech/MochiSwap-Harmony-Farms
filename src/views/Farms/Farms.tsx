@@ -151,7 +151,7 @@ const Farms: React.FC = () => {
     }
   }, [isArchived, dispatch, account])
 
-  const activeFarms = farmsLP.filter((farm) => farm.pid !== 0 && farm.multiplier !== '0X' && !isArchivedPid(farm.pid))
+  const activeFarms = farmsLP.filter((farm) => farm.pid !== 200 && farm.multiplier !== '0X' && !isArchivedPid(farm.pid))
   const inactiveFarms = farmsLP.filter((farm) => farm.pid !== 0 && farm.multiplier === '0X' && !isArchivedPid(farm.pid))
   const archivedFarms = farmsLP.filter((farm) => isArchivedPid(farm.pid))
 
@@ -423,7 +423,7 @@ const Farms: React.FC = () => {
         </ControlContainer>
         {renderContent()}
         <div ref={loadMoreRef} />
-        <StyledImage src="/images/3dpan.png" alt="Pancake illustration" width={120} height={103} />
+        {/* <StyledImage src="/images/3dpan.png" alt="Pancake illustration" width={120} height={103} /> */}
       </Page>
     </>
   )
