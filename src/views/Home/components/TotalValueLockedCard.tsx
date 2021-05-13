@@ -29,7 +29,7 @@ const TotalValueLockedCard = () => {
         {totalValue ? (
           <>
             <Heading scale="xl">{`$${commas}`}</Heading>
-            <Text color="textSubtle">{t('Across all Farm LP and ONEMOON Locked LP')}</Text>
+            <Text color="textSubtle">{t('Across all Farm LP')}</Text>
           </>
         ) : (
           <Skeleton height={66} />

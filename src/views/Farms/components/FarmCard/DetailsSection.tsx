@@ -29,7 +29,6 @@ const DetailsSection: React.FC<ExpandableSectionProps> = ({
   addLiquidityUrl,
 }) => {
   const { t } = useTranslation()
-  console.log('total value', totalValueFormatted.toString())
   return (
     <Wrapper>
       <Flex justifyContent="space-between">
@@ -41,6 +40,7 @@ const DetailsSection: React.FC<ExpandableSectionProps> = ({
       )}
       <StyledLinkExternal href={bscScanAddress}>{t('View Contract')}</StyledLinkExternal>
       <StyledLinkExternal href={infoAddress}>{t('See Pair Info')}</StyledLinkExternal>
+      <StyledLinkExternal target="_blank" href="https://vfat.tools/harmony/mochi/">{t('More APY Info at VFAT')}</StyledLinkExternal>
     </Wrapper>
   )
 }

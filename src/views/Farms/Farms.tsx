@@ -186,10 +186,6 @@ const Farms: React.FC = () => {
           num = new BigNumber(2).times(farm.quoteTokenAmount)
         }
         if (farm.pid === 1) {
-          // console.log('test', farm.token, farm.quoteToken, farm.lpTotalInQuoteToken, farm.quoteToken,  new BigNumber(farm.lpTotalInQuoteToken).times(farm.tokenPriceVsQuote).toString());
-          // console.log('asdaf', new BigNumber(.116).times(farm.tokenPriceVsQuote).toString(), farm.tokenAmount)
-          // console.log('yo', new BigNumber(farm.lpTotalInQuoteToken).div(new BigNumber(farm.tokenAmount)).toString())
-          // num = cakePrice.times(farm.tokenAmount)
           const price = cakePrice.times(farm.tokenPriceVsQuote)
           num = price.times(farm.tokenAmount).times(2)
         }
@@ -254,13 +250,11 @@ const Farms: React.FC = () => {
         }
         if (farm.pid === 21) {
           const price = cakePrice.times(farm.tokenPriceVsQuote)
-          num = price.times(farm.tokenAmount).times(2)
-          console.log('solo', num.toString(), farm.lpTotalSupply, farm.tokenAmount)
+          console.log('asdfasf', price.toString(), farm.tokenAmount, farm.lpTotalInQuoteToken)
+          num = price.times(farm.tokenAmount).times(6800)
         }
         if (farm.pid === 20) {
-          const price = cakePrice.times(farm.tokenPriceVsQuote)
-          num = price.times(farm.tokenAmount).times(2)
-          console.log('solo', num.toString(), farm.lpTotalSupply, farm.tokenAmount)
+          num = cakePrice.times(farm.tokenAmount)
         }
         if (farm.pid === 23) {
           const price = cakePrice.times(farm.tokenPriceVsQuote)

@@ -99,9 +99,9 @@ const AprRow: React.FC<AprRowProps> = ({
             unit="%"
             bold
           />
-          <IconButton onClick={onPresentApyModal} variant="text" scale="sm">
+          {/* <IconButton onClick={onPresentApyModal} variant="text" scale="sm">
             <CalculateIcon color="textSubtle" width="18px" />
-          </IconButton>
+          </IconButton> */}
         </Flex>
       )}
     </Flex>
