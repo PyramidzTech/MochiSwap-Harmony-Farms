@@ -12,7 +12,7 @@
     "format:check": "prettier --check --loglevel error 'src/**/*.{js,jsx,ts,tsx}'",
     "format:write": "prettier --write 'src/**/*.{js,jsx,ts,tsx}'",
     "generate:config": "ts-node --compiler-options '{\"module\":\"commonjs\"}' scripts/generateConfig",
-    "deploy": "yarn build && aws s3 sync build/ s3://testfarms && aws cloudfront create-invalidation --distribution-id E1WHDNTNR99KRK --paths '/*' --profile=kimochi"
+    "deploy": "yarn build && aws s3 sync build/ s3://harmony.mochiswap.io && aws cloudfront create-invalidation --distribution-id E1WHDNTNR99KRK --paths '/*' --profile=kimochi"
   },
   "husky": {
     "hooks": {
