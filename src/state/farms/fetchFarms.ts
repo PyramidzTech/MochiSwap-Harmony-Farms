@@ -68,12 +68,14 @@ const fetchFarms = async (farmsToFetch: FarmConfig[]) => {
       // Amount of token in the LP that are considered staking (i.e amount of token * lp ratio)
       let tokenAmount = new BigNumber(tokenBalanceLP).div(BIG_TEN.pow(tokenDecimals)).times(lpTokenRatio)
       // handle solo pools
-      
       if(farmConfig.pid === 20){
         tokenAmount = new BigNumber(lpTokenBalanceMC).div(BIG_TEN.pow(tokenDecimals))
       }
       if(farmConfig.pid === 21){
         // lpTotalInQuoteToken = new BigNumber(quoteTokenBalanceLP).div(DEFAULT_TOKEN_DECIMAL).times(lpTokenRatio)
+        tokenAmount = new BigNumber(lpTokenBalanceMC).div(BIG_TEN.pow(tokenDecimals))
+      }
+      if(farmConfig.pid === 26){
         tokenAmount = new BigNumber(lpTokenBalanceMC).div(BIG_TEN.pow(tokenDecimals))
       }
       const quoteTokenAmount = new BigNumber(quoteTokenBalanceLP)

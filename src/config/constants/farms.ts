@@ -257,15 +257,15 @@ const farms: FarmConfig[] = [
     token: tokens.apesox,
     quoteToken: tokens.apesox,
   },
-  {
-    pid: 25,
-    lpSymbol: 'ONEMOON Solo',
-    lpAddresses: {
-      1666600000: '0xCB35e4945c7F463c5CCBE3BF9f0389ab9321248F',
-    },
-    token: tokens.onemoon,
-    quoteToken: tokens.onemoon,
-  },
+  // {
+  //   pid: 25,
+  //   lpSymbol: 'ONEMOON Solo',
+  //   lpAddresses: {
+  //     1666600000: '0xCB35e4945c7F463c5CCBE3BF9f0389ab9321248F',
+  //   },
+  //   token: tokens.onemoon,
+  //   quoteToken: tokens.onemoon,
+  // },
   {
     pid: 27,
     lpSymbol: 'SUSHI Solo',
@@ -276,6 +276,42 @@ const farms: FarmConfig[] = [
     quoteToken: tokens.sushi,
   },
 
+  {
+    pid: 28,
+    lpSymbol: 'BUSD-USDC',
+    lpAddresses: {
+      1666600000: '0x17D45ED0260337eb937D0Cf66A67e2367f52ADF1',
+    },
+    token: tokens.busd,
+    quoteToken: tokens.busd,
+  },
+  {
+    pid: 29,
+    lpSymbol: 'USDC-ONEMOON',
+    lpAddresses: {
+      1666600000: '0x59Fc00Cde1dbF32263c0Fd632Aae4D24d3b84A85',
+    },
+    token: tokens.usdc,
+    quoteToken: tokens.usdc,
+  },
+  {
+    pid: 30,
+    lpSymbol: 'bscBUSD-USDC',
+    lpAddresses: {
+      1666600000: '0xf583A7529829F9359E66696F3F54bC55aE086b47',
+    },
+    token: tokens.busd,
+    quoteToken: tokens.busd,
+  },
+  {
+    pid: 31,
+    lpSymbol: 'USDC-USDT',
+    lpAddresses: {
+      1666600000: '0xb3072c553D4f93AE4fF4dCc3342ea723a305bfEF',
+    },
+    token: tokens.usdc,
+    quoteToken: tokens.usdt,
+  },
 
 
 ]

@@ -272,16 +272,31 @@ const Farms: React.FC = () => {
           const price = cakePrice.times(farm.tokenPriceVsQuote)
           num = price.times(farm.tokenAmount).times(2)
         }
-        if (farm.pid === 25) {
-          const price = cakePrice.times(farm.tokenPriceVsQuote)
-          num = cakePrice.times(farm.tokenAmount)
-        }
+        // if (farm.pid === 25) {
+        //   const price = cakePrice.times(farm.tokenPriceVsQuote)
+        //   num = price.times(farm.tokenAmount).times(246000)
+        //   console.log(farm.lpSymbol, 'yooooo')
+        // }
         if (farm.pid === 26) {
           const price = cakePrice.times(farm.tokenPriceVsQuote)
-          num = cakePrice.times(farm.tokenAmount)
+          num = price.times(farm.tokenAmount).times(6800)
+          console.log(farm.lpSymbol, 'yooooo', num.toString(), farm.quoteTokenAmount.toString())
         }
         if (farm.pid === 27) {
-          num = cakePrice.times(farm.tokenAmount)
+          const price = cakePrice.times(farm.tokenPriceVsQuote)
+          num = price.times(farm.tokenAmount).times(246000)
+        }
+        if (farm.pid === 28) {
+          num = new BigNumber(2).times(farm.quoteTokenAmount)
+        }
+        if (farm.pid === 29) {
+          num = new BigNumber(2).times(farm.quoteTokenAmount)
+        }
+        if (farm.pid === 30) {
+          num = new BigNumber(2).times(farm.quoteTokenAmount)
+        }
+        if (farm.pid === 31) {
+          num = new BigNumber(2).times(farm.quoteTokenAmount)
         }
 
 
