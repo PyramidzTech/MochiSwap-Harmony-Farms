@@ -300,8 +300,8 @@ const farms: FarmConfig[] = [
     lpAddresses: {
       1666600000: '0xf583A7529829F9359E66696F3F54bC55aE086b47',
     },
-    token: tokens.busd,
-    quoteToken: tokens.busd,
+    token: tokens.usdc,
+    quoteToken: tokens.usdc,
   },
   {
     pid: 31,

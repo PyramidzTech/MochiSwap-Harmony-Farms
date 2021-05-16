@@ -299,6 +299,7 @@ export const useTotalValue = (): BigNumber => {
       // }
       if (farm.pid === 26) {
         // handle issues with solo pools
+        console.log(farm.lpSymbol, farm.tokenPriceVsQuote)
         const price = cakePrice.times(farm.tokenPriceVsQuote)
         val = price.times(farm.tokenAmount)
       }

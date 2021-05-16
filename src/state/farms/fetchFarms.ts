@@ -72,15 +72,21 @@ const fetchFarms = async (farmsToFetch: FarmConfig[]) => {
         tokenAmount = new BigNumber(lpTokenBalanceMC).div(BIG_TEN.pow(tokenDecimals))
       }
       if(farmConfig.pid === 21){
-        // lpTotalInQuoteToken = new BigNumber(quoteTokenBalanceLP).div(DEFAULT_TOKEN_DECIMAL).times(lpTokenRatio)
         tokenAmount = new BigNumber(lpTokenBalanceMC).div(BIG_TEN.pow(tokenDecimals))
       }
       if(farmConfig.pid === 26){
         tokenAmount = new BigNumber(lpTokenBalanceMC).div(BIG_TEN.pow(tokenDecimals))
       }
-      const quoteTokenAmount = new BigNumber(quoteTokenBalanceLP)
+      let quoteTokenAmount = new BigNumber(quoteTokenBalanceLP)
         .div(BIG_TEN.pow(quoteTokenDecimals))
         .times(lpTokenRatio)
+
+      if(farmConfig.pid === 26){
+        // lpTotalInQuoteToken = new BigNumber(quoteTokenBalanceLP).div(DEFAULT_TOKEN_DECIMAL).times(lpTokenRatio)
+        quoteTokenAmount = new BigNumber(tokenAmount)
+        .div(BIG_TEN.pow(quoteTokenDecimals))
+        .times(lpTokenRatio)
+      }
 
       const [info, totalAllocPoint] = await multicall(masterchefABI, [
         {
