@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react'
 import { Input } from '@pancakeswap/uikit'
 import styled from 'styled-components'
 import debounce from 'lodash/debounce'
+import { useLocation } from 'react-router-dom'
 
 const StyledInput = styled(Input)`
   border-radius: 16px;
@@ -35,6 +36,12 @@ const SearchInput: React.FC<Props> = ({ onChange: onChangeCallback }) => {
     setSearchText(e.target.value)
     debouncedOnChange(e)
   }
+  const { pathname } = useLocation()
+  const showSolo = pathname.includes('pools')
+  let paceholderText = "Search Farms"
+  if(showSolo){
+    paceholderText = "SOLO Pools"
+  }
 
   return (
     <Container toggled={toggled}>
@@ -42,7 +49,7 @@ const SearchInput: React.FC<Props> = ({ onChange: onChangeCallback }) => {
         <StyledInput
           value={searchText}
           onChange={onChange}
-          placeholder="Search farms"
+          placeholder={paceholderText}
           onBlur={() => setToggled(false)}
         />
       </InputWrapper>

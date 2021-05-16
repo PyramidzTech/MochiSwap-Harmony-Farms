@@ -26,6 +26,11 @@ const config: MenuEntry[] = [
     href: '/farms',
   },
   {
+    label: 'SOLO Pools',
+    icon: 'PoolIcon',
+    href: '/pools',
+  },
+  {
     label: 'Analytics',
     icon: 'InfoIcon',
     items: [

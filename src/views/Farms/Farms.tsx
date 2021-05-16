@@ -127,6 +127,7 @@ const Farms: React.FC = () => {
   }, [account, dispatch, fastRefresh])
 
   const isArchived = pathname.includes('archived')
+  const showSolo = pathname.includes('pools')
   const isInactive = pathname.includes('history')
   const isActive = !isInactive && !isArchived
   // Users with no wallet connected should see 0 as Earned amount
@@ -152,7 +153,11 @@ const Farms: React.FC = () => {
     }
   }, [isArchived, dispatch, account])
 
-  const activeFarms = farmsLP.filter((farm) => farm.pid !== 200 && farm.multiplier !== '0X' && !isArchivedPid(farm.pid))
+  // handle solo pool page
+  let activeFarms = farmsLP.filter((farm) => farm.pid !== 200 && farm.multiplier !== '0X' && !isArchivedPid(farm.pid))
+  if (showSolo){
+    activeFarms = farmsLP.filter((farm) => farm.pid === 21 || farm.pid === 20 && farm.multiplier !== '0X' && !isArchivedPid(farm.pid))
+  }
   const inactiveFarms = farmsLP.filter((farm) => farm.pid !== 0 && farm.multiplier === '0X' && !isArchivedPid(farm.pid))
   const archivedFarms = farmsLP.filter((farm) => isArchivedPid(farm.pid))
 
@@ -250,7 +255,6 @@ const Farms: React.FC = () => {
         }
         if (farm.pid === 21) {
           const price = cakePrice.times(farm.tokenPriceVsQuote)
-          console.log('asdfasf', price.toString(), farm.tokenAmount, farm.lpTotalInQuoteToken)
           num = price.times(farm.tokenAmount).times(6800)
         }
         if (farm.pid === 20) {
@@ -462,14 +466,21 @@ const Farms: React.FC = () => {
     setSortOption(option.value)
   }
 
+  let heading1 = "Farms"
+  let heading2 = "Stake Liquidity Pool (LP) Tokens to Earn High Yield!"
+  if(showSolo){
+    heading1 = "SOLO Pools"
+    heading2 = "Simple stake single assets to earn!"
+  }
+
   return (
     <>
       <PageHeader>
         <Heading as="h1" scale="xxl" color="secondary" mb="24px">
-          {t('Farms')}
+          {heading1}
         </Heading>
         <Heading scale="lg" color="text">
-          {t('Stake Liquidity Pool (LP) tokens to earn.')}
+          {heading2}
         </Heading>
       </PageHeader>
       <Page>
