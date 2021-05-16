@@ -156,7 +156,7 @@ const Farms: React.FC = () => {
   // handle solo pool page
   let activeFarms = farmsLP.filter((farm) => farm.pid !== 200 && farm.multiplier !== '0X' && !isArchivedPid(farm.pid))
   if (showSolo){
-    activeFarms = farmsLP.filter((farm) => farm.pid === 21 || farm.pid === 20 && farm.multiplier !== '0X' && !isArchivedPid(farm.pid))
+    activeFarms = farmsLP.filter((farm) => farm.pid === 21 || farm.pid === 20 || farm.pid === 25 || farm.pid === 26 || farm.pid === 27 && farm.multiplier !== '0X' && !isArchivedPid(farm.pid))
   }
   const inactiveFarms = farmsLP.filter((farm) => farm.pid !== 0 && farm.multiplier === '0X' && !isArchivedPid(farm.pid))
   const archivedFarms = farmsLP.filter((farm) => isArchivedPid(farm.pid))
@@ -271,6 +271,17 @@ const Farms: React.FC = () => {
         if (farm.pid === 24) {
           const price = cakePrice.times(farm.tokenPriceVsQuote)
           num = price.times(farm.tokenAmount).times(2)
+        }
+        if (farm.pid === 25) {
+          const price = cakePrice.times(farm.tokenPriceVsQuote)
+          num = cakePrice.times(farm.tokenAmount)
+        }
+        if (farm.pid === 26) {
+          const price = cakePrice.times(farm.tokenPriceVsQuote)
+          num = cakePrice.times(farm.tokenAmount)
+        }
+        if (farm.pid === 27) {
+          num = cakePrice.times(farm.tokenAmount)
         }
 
 

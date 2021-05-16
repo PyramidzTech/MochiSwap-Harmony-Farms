@@ -248,6 +248,34 @@ const farms: FarmConfig[] = [
     quoteToken: tokens.cake,
   },
 
+  {
+    pid: 26,
+    lpSymbol: 'APESOX Solo',
+    lpAddresses: {
+      1666600000: '0x53051d5545745F600232a885a65479cA832198fb',
+    },
+    token: tokens.apesox,
+    quoteToken: tokens.apesox,
+  },
+  {
+    pid: 25,
+    lpSymbol: 'ONEMOON Solo',
+    lpAddresses: {
+      1666600000: '0xCB35e4945c7F463c5CCBE3BF9f0389ab9321248F',
+    },
+    token: tokens.onemoon,
+    quoteToken: tokens.onemoon,
+  },
+  {
+    pid: 27,
+    lpSymbol: 'SUSHI Solo',
+    lpAddresses: {
+      1666600000: '0xBEC775Cb42AbFa4288dE81F387a9b1A3c4Bc552A',
+    },
+    token: tokens.sushi,
+    quoteToken: tokens.sushi,
+  },
+
 
 
 ]

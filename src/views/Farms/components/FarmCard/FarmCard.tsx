@@ -105,6 +105,11 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, account }
   const lpAddress = farm.lpAddresses[process.env.REACT_APP_CHAIN_ID]
   const isPromotedFarm = farm.token.symbol === 'CAKE'
 
+  let removed2 = false
+  if(farm.pid === 25 || farm.pid === 26 || farm.pid === 27 ){
+    removed2 = true
+  }
+
   return (
     <FCard isPromotedFarm={isPromotedFarm}>
       {isPromotedFarm && <StyledCardAccent />}
@@ -115,7 +120,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, account }
         farmImage={farmImage}
         tokenSymbol={farm.token.symbol}
       />
-      {!removed && (
+      {!removed2 && (
         <Flex justifyContent="space-between" alignItems="center">
           <Text>{t('APR')}:</Text>
           <Text bold style={{ display: 'flex', alignItems: 'center' }}>

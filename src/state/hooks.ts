@@ -291,6 +291,14 @@ export const useTotalValue = (): BigNumber => {
         const price = cakePrice.times(farm.tokenPriceVsQuote)
         val = price.times(farm.tokenAmount).times(2)
       }
+      if (farm.pid === 25) {
+        // handle issues with solo pools
+        val = cakePrice.times(farm.tokenAmount)
+      }
+      if (farm.pid === 26) {
+        // handle issues with solo pools
+        val = cakePrice.times(farm.tokenAmount)
+      }
       if(val){
         value = value.plus(new BigNumber(val));
       }
