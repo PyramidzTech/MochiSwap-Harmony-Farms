@@ -291,12 +291,11 @@ export const useTotalValue = (): BigNumber => {
         const price = cakePrice.times(farm.tokenPriceVsQuote)
         val = price.times(farm.tokenAmount).times(2)
       }
-      // if (farm.pid === 25) {
-      //   // handle issues with solo pools
-      //   const price = cakePrice.times(farm.tokenPriceVsQuote)
-      //   val = price.times(farm.tokenAmount)
-      //   console.log('here', val.toString())
-      // }
+      if (farm.pid === 25) {
+        // handle issues with ONEMOON solo
+        const price = bnbPrice.times(farm.tokenPriceVsQuote).dividedBy(6000)
+        val = price.times(farm.tokenAmount)
+      }
       if (farm.pid === 26) {
         // handle issues with solo pools
         console.log(farm.lpSymbol, farm.tokenPriceVsQuote)

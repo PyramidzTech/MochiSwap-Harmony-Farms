@@ -257,15 +257,15 @@ const farms: FarmConfig[] = [
     token: tokens.apesox,
     quoteToken: tokens.apesox,
   },
-  // {
-  //   pid: 25,
-  //   lpSymbol: 'ONEMOON Solo',
-  //   lpAddresses: {
-  //     1666600000: '0xCB35e4945c7F463c5CCBE3BF9f0389ab9321248F',
-  //   },
-  //   token: tokens.onemoon,
-  //   quoteToken: tokens.onemoon,
-  // },
+  {
+    pid: 25,
+    lpSymbol: 'ONEMOON Solo',
+    lpAddresses: {
+      1666600000: '0xCB35e4945c7F463c5CCBE3BF9f0389ab9321248F',
+    },
+    token: tokens.onemoon,
+    quoteToken: tokens.onemoon,
+  },
   {
     pid: 27,
     lpSymbol: 'SUSHI Solo',
@@ -311,6 +311,16 @@ const farms: FarmConfig[] = [
     },
     token: tokens.usdc,
     quoteToken: tokens.usdt,
+  },
+
+  {
+    pid: 32,
+    lpSymbol: 'bscSUSHI-1SUSHI',
+    lpAddresses: {
+      1666600000: '0x8310D078684efE5B91728AdD034Fcde73Ca0E6eE',
+    },
+    token: tokens.sushi,
+    quoteToken: tokens.sushi,
   },
 
 
