@@ -77,6 +77,10 @@ const fetchFarms = async (farmsToFetch: FarmConfig[]) => {
       if(farmConfig.pid === 26){
         tokenAmount = new BigNumber(lpTokenBalanceMC).div(BIG_TEN.pow(tokenDecimals))
       }
+      // if(farmConfig.pid === 25){
+      //   tokenAmount = new BigNumber(lpTokenBalanceMC).div(BIG_TEN.pow(9))
+      //   console.log('token amount', tokenAmount)
+      // }
       let quoteTokenAmount = new BigNumber(quoteTokenBalanceLP)
         .div(BIG_TEN.pow(quoteTokenDecimals))
         .times(lpTokenRatio)
