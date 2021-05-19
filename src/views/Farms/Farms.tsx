@@ -276,8 +276,11 @@ const Farms: React.FC = () => {
           num = price.times(farm.tokenAmount).times(2)
         }
         if (farm.pid === 25) {
-          const price = onemoonPrice.times(farm.tokenPriceVsQuote)
-          num = price.times(farm.tokenAmount).times(0.0002)
+          // awful temp fix for onemoon price
+          // .dividedBy(100000000).times(1.72)
+          const price = onemoonPrice.times(farm.tokenPriceVsQuote).div(1.7)
+          // console.log(price.toString(), farm.tokenAmount)
+          num = price.times(farm.tokenAmount).times(0.0000556)
         }
         if (farm.pid === 26) {
           const price = cakePrice.times(farm.tokenPriceVsQuote)

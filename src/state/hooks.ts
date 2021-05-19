@@ -202,6 +202,7 @@ export const useTotalValue = (): BigNumber => {
   const { data: farmsLP } = useFarms()
   const bnbPrice = usePriceBnbBusd();
   const cakePrice = usePriceCakeBusd();
+  const oneMoonPriceBase = usePriceOneMoonUSDC()
 
   let value = new BigNumber(0);
   for (let i = 0; i < farmsLP.length; i++) {
@@ -300,8 +301,11 @@ export const useTotalValue = (): BigNumber => {
       }
       if (farm.pid === 25) {
         // handle issues with ONEMOON solo
-        const price = bnbPrice.times(farm.tokenPriceVsQuote)
-        val = new BigNumber(price.times(farm.tokenAmount).times(0.000260))
+        // const price = bnbPrice.times(farm.tokenPriceVsQuote)
+        // val = new BigNumber(price.times(farm.tokenAmount).times(0.0000350))
+        const price = oneMoonPriceBase.times(farm.tokenPriceVsQuote).div(1.7)
+        val = price.times(farm.tokenAmount).times(0.0000556)
+        // val = new BigNumber(6800000)
       }
       if (farm.pid === 26) {
         // handle issues with solo pools
