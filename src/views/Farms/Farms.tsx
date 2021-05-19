@@ -154,9 +154,11 @@ const Farms: React.FC = () => {
   }, [isArchived, dispatch, account])
 
   // handle solo pool page
-  let activeFarms = farmsLP.filter((farm) => farm.pid !== 25 && farm.multiplier !== '0X' && !isArchivedPid(farm.pid))
+  const soloFarms = [21,20,25,26,27];
+  // let activeFarms = farmsLP.filter((farm) => farm.pid !== 25 && farm.multiplier !== '0X' && !isArchivedPid(farm.pid))
+  let activeFarms = farmsLP.filter((farm) => farm.multiplier !== '0X' && !isArchivedPid(farm.pid))
   if (showSolo){
-    activeFarms = farmsLP.filter((farm) => farm.pid === 21 || farm.pid === 20 || farm.pid === 26 || farm.pid === 27 && farm.multiplier !== '0X' && !isArchivedPid(farm.pid))
+    activeFarms = farmsLP.filter((farm) => soloFarms.includes(farm.pid) && farm.multiplier !== '0X' && !isArchivedPid(farm.pid))
   }
   const inactiveFarms = farmsLP.filter((farm) => farm.pid !== 0 && farm.multiplier === '0X' && !isArchivedPid(farm.pid))
   const archivedFarms = farmsLP.filter((farm) => isArchivedPid(farm.pid))
