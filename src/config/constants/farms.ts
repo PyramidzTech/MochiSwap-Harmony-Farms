@@ -254,7 +254,7 @@ const farms: FarmConfig[] = [
       1666600000: '0xCB35e4945c7F463c5CCBE3BF9f0389ab9321248F',
     },
     token: tokens.onemoon,
-    quoteToken: tokens.one,
+    quoteToken: tokens.onemoon,
   },
   {
     pid: 26,

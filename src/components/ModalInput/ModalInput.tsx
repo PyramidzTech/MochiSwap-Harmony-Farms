@@ -76,6 +76,7 @@ const ModalInput: React.FC<ModalInputProps> = ({
     if (balanceNumber > 0 && balanceNumber < 0.0001) {
       return balanceNumber.toLocaleString(undefined, { maximumFractionDigits: 20 })
     }
+    console.log(value)
     return balanceNumber.toLocaleString()
   }
 
