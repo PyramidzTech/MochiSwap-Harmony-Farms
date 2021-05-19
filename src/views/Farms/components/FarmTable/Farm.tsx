@@ -34,7 +34,9 @@ const Container = styled.div`
 const Farm: React.FunctionComponent<FarmProps> = ({ image, label, pid }) => {
   const { stakedBalance } = useFarmUser(pid)
   const { t } = useTranslation()
-  const rawStakedBalance = getBalanceNumber(stakedBalance)
+
+  const decimals = pid === 25? 9 : 18;
+  const rawStakedBalance = getBalanceNumber(stakedBalance, decimals)
 
   const handleRenderFarming = (): JSX.Element => {
     if (rawStakedBalance) {

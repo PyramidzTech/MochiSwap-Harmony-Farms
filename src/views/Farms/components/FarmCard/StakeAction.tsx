@@ -1,3 +1,5 @@
+/* eslint-disable no-debugger */
+
 import React, { useCallback } from 'react'
 import styled from 'styled-components'
 import BigNumber from 'bignumber.js'
@@ -36,14 +38,14 @@ const StakeAction: React.FC<FarmCardActionsProps> = ({
   const { onStake } = useStake(pid)
   const { onUnstake } = useUnstake(pid)
   const location = useLocation()
-
+  
   const displayBalance = useCallback(() => {
-    const stakedBalanceNumber = getBalanceNumber(stakedBalance)
+    const stakedBalanceNumber = pid === 25? getBalanceNumber(stakedBalance, 9) : getBalanceNumber(stakedBalance)
     if (stakedBalanceNumber > 0 && stakedBalanceNumber < 0.0001) {
-      return getFullDisplayBalance(stakedBalance).toLocaleString()
+      return getFullDisplayBalance(stakedBalance, 9).toLocaleString()
     }
     return stakedBalanceNumber.toLocaleString()
-  }, [stakedBalance])
+  }, [stakedBalance, pid])
 
   const [onPresentDeposit] = useModal(
     <DepositModal max={tokenBalance} onConfirm={onStake} tokenName={tokenName} addLiquidityUrl={addLiquidityUrl} />,

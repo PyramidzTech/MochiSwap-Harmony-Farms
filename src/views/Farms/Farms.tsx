@@ -1,5 +1,4 @@
 /* eslint-disable no-debugger */
-
 import React, { useEffect, useCallback, useState, useMemo, useRef } from 'react'
 import { Route, useRouteMatch, useLocation } from 'react-router-dom'
 import { useAppDispatch } from 'state'

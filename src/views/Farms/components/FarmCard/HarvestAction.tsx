@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 import React, { useState } from 'react'
 import BigNumber from 'bignumber.js'
 import { Button, Flex, Heading } from '@pancakeswap/uikit'
@@ -14,6 +15,7 @@ interface FarmCardActionsProps {
 }
 
 const HarvestAction: React.FC<FarmCardActionsProps> = ({ earnings, pid }) => {
+
   const { account } = useWeb3React()
   const { t } = useTranslation()
   const [pendingTx, setPendingTx] = useState(false)

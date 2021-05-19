@@ -1,3 +1,5 @@
+/* eslint-disable no-debugger */
+
 import React, { useState, useRef, useEffect } from 'react'
 import { Button, Skeleton } from '@pancakeswap/uikit'
 import BigNumber from 'bignumber.js'
@@ -20,14 +22,16 @@ const HarvestAction: React.FunctionComponent<HarvestActionProps> = ({ pid, userD
   let earnings = 0
   let earningsBusd = 0
   let displayBalance = userDataReady ? earnings.toLocaleString() : <Skeleton width={60} />
-
+  
   // If user didn't connect wallet default balance will be 0
   if (!earningsBigNumber.isZero()) {
-    earnings = getBalanceNumber(earningsBigNumber)
+    const decimals = pid === 25 ? 9 : 18
+    earnings = getBalanceNumber(earningsBigNumber, decimals)
     earningsBusd = new BigNumber(earnings).multipliedBy(cakePrice).toNumber()
+    
     displayBalance = earnings.toLocaleString()
   }
-
+  
   const [pendingTx, setPendingTx] = useState(false)
   const { onReward } = useHarvest(pid)
   const { t } = useTranslation()
