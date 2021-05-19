@@ -17,10 +17,11 @@ const WithdrawModal: React.FC<WithdrawModalProps> = ({ onConfirm, onDismiss, max
   const [val, setVal] = useState('')
   const [pendingTx, setPendingTx] = useState(false)
   const { t } = useTranslation()
-  const fullBalance = useMemo(() => {
-    return getFullDisplayBalance(max)
-  }, [max])
-
+  const decimals = tokenName === "ONEMOON"? 9 : 18;
+  const fullBalance = getFullDisplayBalance(max, decimals)
+  // const fullBalance = useMemo(() => {
+  //   return getFullDisplayBalance(max)
+  // }, [max])
   const valNumber = new BigNumber(val)
   const fullBalanceNumber = new BigNumber(fullBalance)
 

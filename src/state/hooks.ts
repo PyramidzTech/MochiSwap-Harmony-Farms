@@ -184,6 +184,13 @@ export const usePriceBnbBusd = (): BigNumber => {
   return bnbBusdFarm.tokenPriceVsQuote ? new BigNumber(1).div(bnbBusdFarm.tokenPriceVsQuote) : BIG_ZERO
 }
 
+export const usePriceOneMoonUSDC = (): BigNumber => {
+  const onemoonUsdcFarm = useFarmFromPid(29)
+  const bnbBusdPrice = usePriceBnbBusd()
+  const cakeBusdPrice = onemoonUsdcFarm.tokenPriceVsQuote ? bnbBusdPrice.times(onemoonUsdcFarm.tokenPriceVsQuote) : BIG_ZERO
+  return cakeBusdPrice
+}
+
 export const usePriceCakeBusd = (): BigNumber => {
   const cakeBnbFarm = useFarmFromPid(4)
   const bnbBusdPrice = usePriceBnbBusd()

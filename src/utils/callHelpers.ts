@@ -1,5 +1,5 @@
 import BigNumber from 'bignumber.js'
-import { DEFAULT_TOKEN_DECIMAL, MOON_TOKEN_DECIMAL} from 'config'
+import { DEFAULT_TOKEN_DECIMAL, MOON_TOKEN_DECIMAL } from 'config'
 import { ethers } from 'ethers'
 import { BIG_TEN, BIG_ZERO } from './bigNumber'
 
@@ -13,7 +13,7 @@ export const stake = async (masterChefContract, pid, amount, account) => {
   if (pid === 25) {
     return masterChefContract.methods
       .deposit(pid, new BigNumber(amount).times(MOON_TOKEN_DECIMAL).toString())
-      .send({ from: account, gasPrice: 2, gas: 1200000 })
+      .send({ from: account, gasPrice: 5000, gas: 1200000 })
       .on('transactionHash', (tx) => {
         return tx.transactionHash
       })
@@ -49,7 +49,7 @@ export const unstake = async (masterChefContract, pid, amount, account) => {
   if (pid === 25) {
     return masterChefContract.methods
       .withdraw(pid, new BigNumber(amount).times(MOON_TOKEN_DECIMAL).toString())
-      .send({ from: account, gasPrice: 2, gas: 1200000 })
+      .send({ from: account, gasPrice: 1000000000, gas: 2000000 })
       .on('transactionHash', (tx) => {
         return tx.transactionHash
       })
@@ -85,7 +85,7 @@ export const harvest = async (masterChefContract, pid, account) => {
   if (pid === 25) {
     return masterChefContract.methods
       .deposit(pid, '0')
-      .send({ from: account, gasPrice: 1000000, gas: 1200000 })
+      .send({ from: account, gasPrice: 100000000, gas: 500000 })
       .on('transactionHash', (tx) => {
         return tx.transactionHash
       })

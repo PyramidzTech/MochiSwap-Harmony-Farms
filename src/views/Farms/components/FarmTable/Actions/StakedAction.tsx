@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 import React, { useState, useCallback } from 'react'
 import styled from 'styled-components'
 import { Button, useModal, IconButton, AddIcon, MinusIcon, Skeleton } from '@pancakeswap/uikit'
@@ -55,12 +56,14 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({
   const addLiquidityUrl = `${BASE_ADD_LIQUIDITY_URL}/${liquidityUrlPathParts}`
 
   const displayBalance = useCallback(() => {
-    const stakedBalanceNumber = getBalanceNumber(stakedBalance)
-    if (stakedBalanceNumber > 0 && stakedBalanceNumber < 0.0001) {
-      return getFullDisplayBalance(stakedBalance).toLocaleString()
-    }
-    return stakedBalanceNumber.toLocaleString()
-  }, [stakedBalance])
+    // const stakedBalanceNumber = getBalanceNumber(stakedBalance)
+    const {decimals} = token
+    const output = getFullDisplayBalance(stakedBalance, decimals, 6).toLocaleString()
+    // if (stakedBalanceNumber > 0 && stakedBalanceNumber < 0.0001) {
+    //   return getFullDisplayBalance(stakedBalance, decimals).toLocaleString()
+    // }
+    return output;
+  }, [stakedBalance, token])
 
   const [onPresentDeposit] = useModal(
     <DepositModal max={tokenBalance} onConfirm={onStake} tokenName={lpSymbol} addLiquidityUrl={addLiquidityUrl} />,

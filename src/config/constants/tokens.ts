@@ -100,8 +100,8 @@ const tokens = {
     address: {
       1666600000: '0xCB35e4945c7F463c5CCBE3BF9f0389ab9321248F',
     },
-    decimals: 18,
-    projectLink: 'https://tixl.org/',
+    decimals: 9,
+    projectLink: 'https://onemoon.mochiswap.io/',
   },
   math: {
     symbol: 'MATH',
