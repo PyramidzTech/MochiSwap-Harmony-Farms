@@ -87,6 +87,14 @@ const tokens = {
     decimals: 18,
     projectLink: 'https://tixl.org/',
   },
+  doge: {
+    symbol: 'DOGE',
+    address: {
+      1666600000: '0xF155E1a57DB0Ca820aE37Ab4050e0e4C7cFcEcd0',
+    },
+    decimals: 18,
+    projectLink: 'https://tixl.org/',
+  },
   bscbusd: {
     symbol: 'BSCBUSD',
     address: {

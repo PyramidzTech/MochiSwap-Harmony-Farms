@@ -25,7 +25,7 @@ const HarvestAction: React.FunctionComponent<HarvestActionProps> = ({ pid, userD
   
   // If user didn't connect wallet default balance will be 0
   if (!earningsBigNumber.isZero()) {
-    const decimals = pid === 25 ? 9 : 18
+    const decimals = pid === 25 ? 18 : 18
     earnings = getBalanceNumber(earningsBigNumber, decimals)
     earningsBusd = new BigNumber(earnings).multipliedBy(cakePrice).toNumber()
     

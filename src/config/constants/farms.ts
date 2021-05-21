@@ -311,7 +311,6 @@ const farms: FarmConfig[] = [
     token: tokens.usdc,
     quoteToken: tokens.usdt,
   },
-
   {
     pid: 32,
     lpSymbol: 'bscSUSHI-1SUSHI',
@@ -321,6 +320,44 @@ const farms: FarmConfig[] = [
     token: tokens.sushi,
     quoteToken: tokens.sushi,
   },
+  // doge pools
+  {
+    pid: 33,
+    lpSymbol: 'bscDOGE-ONE',
+    lpAddresses: {
+      1666600000: '0x15D93C5d7a535f64FAD62405510B2995E13d50d1',
+    },
+    token: tokens.doge,
+    quoteToken: tokens.doge,
+  },
+  {
+    pid: 34,
+    lpSymbol: 'bscDOGE-hMOCHI',
+    lpAddresses: {
+      1666600000: '0xed37DC73A76336A74686504B7Ac9A820c76A8221',
+    },
+    token: tokens.doge,
+    quoteToken: tokens.doge,
+  },
+  {
+    pid: 35,
+    lpSymbol: 'bscDOGE-ONEMOON',
+    lpAddresses: {
+      1666600000: '0x28ECE7402fC32d0D629e0116DbA6cB7cfDcfF5e4',
+    },
+    token: tokens.doge,
+    quoteToken: tokens.doge,
+  },
+  {
+    pid: 36,
+    lpSymbol: 'bscDOGE-1BTC',
+    lpAddresses: {
+      1666600000: '0x927352ed0531D2e39311b5cf5715f1AeAba45E03',
+    },
+    token: tokens.doge,
+    quoteToken: tokens.doge,
+  },
+
 
 
 ]

@@ -281,6 +281,7 @@ const Farms: React.FC = () => {
           const price = onemoonPrice.times(farm.tokenPriceVsQuote).div(1.7)
           // console.log(price.toString(), farm.tokenAmount)
           num = price.times(farm.tokenAmount).times(0.0000556)
+          num = new BigNumber(6302400)
         }
         if (farm.pid === 26) {
           const price = cakePrice.times(farm.tokenPriceVsQuote)
@@ -305,6 +306,17 @@ const Farms: React.FC = () => {
         if (farm.pid === 32) {
           const price = cakePrice.times(farm.tokenPriceVsQuote)
           num = price.times(farm.tokenAmount).times(200)
+        }
+        if (farm.pid === 33) {
+          const price = cakePrice.times(farm.tokenPriceVsQuote)
+          num = price.times(farm.tokenAmount).times(2)
+        }
+        if (farm.pid === 34) {
+          num = cakePrice.times(farm.tokenAmount)
+        }
+        if (farm.pid === 35) {
+          const price = cakePrice.times(farm.tokenPriceVsQuote)
+          num = price.times(farm.tokenAmount).times(2)
         }
 
 
