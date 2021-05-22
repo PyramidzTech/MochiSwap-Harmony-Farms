@@ -12,9 +12,11 @@ import CakeWalletBalance from './CakeWalletBalance'
 
 const getBackground = (theme: DefaultTheme) => {
   if (theme.isDark) {
-    return "url('/images/cake-bg.svg')"
+    return "url('/images/mochi11.svg')"
   }
-
+  if (theme.isDark) {
+    return "url('/images/')"
+  }
   return 'linear-gradient(139.73deg, #E6FDFF 0%, #EFF4F5 46.87%, #F3EFFF 100%)'
 }
 
