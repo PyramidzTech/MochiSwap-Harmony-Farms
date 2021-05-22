@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react'
-import styled from 'styled-components'
+import styled, { DefaultTheme } from 'styled-components'
 import { Heading, Card, CardBody, Button } from '@pancakeswap/uikit'
 import { useWeb3React } from '@web3-react/core'
 import { useTranslation } from 'contexts/Localization'
@@ -9,8 +9,17 @@ import UnlockButton from 'components/UnlockButton'
 import CakeHarvestBalance from './CakeHarvestBalance'
 import CakeWalletBalance from './CakeWalletBalance'
 
+
+const getBackground = (theme: DefaultTheme) => {
+  if (theme.isDark) {
+    return "url('/images/cake-bg.svg')"
+  }
+
+  return 'linear-gradient(139.73deg, #E6FDFF 0%, #EFF4F5 46.87%, #F3EFFF 100%)'
+}
+
 const StyledFarmStakingCard = styled(Card)`
-  background-image: url('/images/cake-bg.svg');
+  background-image:${({ theme }) => getBackground(theme)};
   background-size: 40%;
   background-repeat: no-repeat;
   background-position: top -50px right -50px;

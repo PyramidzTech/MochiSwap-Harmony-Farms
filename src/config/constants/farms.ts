@@ -336,8 +336,8 @@ const farms: FarmConfig[] = [
     lpAddresses: {
       1666600000: '0xed37DC73A76336A74686504B7Ac9A820c76A8221',
     },
-    token: tokens.doge,
-    quoteToken: tokens.doge,
+    token: tokens.cake,
+    quoteToken: tokens.cake,
   },
   {
     pid: 35,

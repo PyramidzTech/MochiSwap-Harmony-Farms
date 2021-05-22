@@ -97,7 +97,7 @@ const LotteryCard = () => {
         <Heading scale="xl" mb="24px">
           {t('Your Lottery Winnings')}
         </Heading>
-        <CardImage src="/images/ticket.svg" alt="cake logo" width={64} height={64} />
+        <CardImage src="/images/ticket.svg" alt="cake logo" width={2264} height={64} />
         <Block>
           <Label>{t('CAKE to Collect')}:</Label>
           <CakeWinnings claimAmount={claimAmount} />

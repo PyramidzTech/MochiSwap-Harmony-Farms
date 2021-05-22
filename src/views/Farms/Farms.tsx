@@ -9,7 +9,7 @@ import styled from 'styled-components'
 import FlexLayout from 'components/layout/Flex'
 import Page from 'components/layout/Page'
 import useRefresh from 'hooks/useRefresh'
-import { useFarms, usePriceCakeBusd, useGetApiPrices, usePriceOneMoonUSDC } from 'state/hooks'
+import { useFarms, usePriceCakeBusd, usePriceBnbBusd, useGetApiPrices, usePriceOneMoonUSDC } from 'state/hooks'
 import { fetchFarmUserDataAsync } from 'state/actions'
 import usePersistState from 'hooks/usePersistState'
 import { Farm } from 'state/types'
@@ -113,6 +113,7 @@ const Farms: React.FC = () => {
   const [query, setQuery] = useState('')
   const cakePrice = usePriceCakeBusd()
   const onemoonPrice = usePriceOneMoonUSDC()
+  const onePrice = usePriceBnbBusd()
   // const bnbPrice = usePriceBnbBusd()
   const [viewMode, setViewMode] = usePersistState(ViewMode.TABLE, 'pancake_farm_view')
   const { account } = useWeb3React()
@@ -308,15 +309,20 @@ const Farms: React.FC = () => {
           num = price.times(farm.tokenAmount).times(200)
         }
         if (farm.pid === 33) {
-          const price = cakePrice.times(farm.tokenPriceVsQuote)
-          num = price.times(farm.tokenAmount).times(2)
+          const price = onePrice.times(farm.tokenPriceVsQuote).dividedBy(2)
+          num = price.times(farm.tokenAmount).times(1.1)
         }
         if (farm.pid === 34) {
-          num = cakePrice.times(farm.tokenAmount)
+          const price = cakePrice.times(farm.tokenPriceVsQuote)
+          num = price.times(farm.tokenAmount).times(2)
         }
         if (farm.pid === 35) {
           const price = cakePrice.times(farm.tokenPriceVsQuote)
-          num = price.times(farm.tokenAmount).times(2)
+          num = price.times(farm.tokenAmount).times(3)
+        }
+        if (farm.pid === 36) {
+          const price = onePrice.times(farm.tokenPriceVsQuote)
+          num = price.times(farm.tokenAmount).times(1).dividedBy(2)
         }
 
 
@@ -335,7 +341,7 @@ const Farms: React.FC = () => {
       }
       return farmsToDisplayWithAPR
     },
-    [cakePrice, prices, query, isActive, onemoonPrice],
+    [cakePrice, prices, query, isActive, onemoonPrice, onePrice],
   )
 
   const handleChangeQuery = (event: React.ChangeEvent<HTMLInputElement>) => {
