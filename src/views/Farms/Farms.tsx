@@ -520,6 +520,7 @@ const Farms: React.FC = () => {
 
   let heading1 = "Farms"
   let heading2 = "Stake Liquidity Pool (LP) Tokens to Earn High Yield!"
+  const heading3 = "*APR calculation display has been updated to similiary match VFAT to avoid confusion."
   if(showSolo){
     heading1 = "SOLO Pools"
     heading2 = "Simple stake single assets to earn!"
@@ -534,6 +535,9 @@ const Farms: React.FC = () => {
         <Heading scale="lg" color="text">
           {heading2}
         </Heading>
+        <p style={{color: "green"}}>
+          {heading3}
+        </p>
       </PageHeader>
       <Page>
         <ControlContainer>
