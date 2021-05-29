@@ -111,6 +111,14 @@ const tokens = {
     decimals: 9,
     projectLink: 'https://onemoon.mochiswap.io/',
   },
+  safemoon: {
+    symbol: 'SAFEMOON',
+    address: {
+      1666600000: '0x58c5E26fcc4d1d442396D33b58af31549C64d22F',
+    },
+    decimals: 9,
+    projectLink: 'https://onemoon.mochiswap.io/',
+  },
   math: {
     symbol: 'MATH',
     address: {

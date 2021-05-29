@@ -358,6 +358,28 @@ const farms: FarmConfig[] = [
     quoteToken: tokens.doge,
   },
 
+  {
+    pid: 37,
+    lpSymbol: 'SAFEMOON-ONEMOON',
+    lpAddresses: {
+      1666600000: '0x430AF8e366d4b2795196B736Ba701D131D51E692',
+    },
+    token: tokens.safemoon,
+    quoteToken: tokens.safemoon,
+  },
+
+
+  {
+    pid: 38,
+    lpSymbol: 'SAFEMOON-hMOCHI',
+    lpAddresses: {
+      1666600000: '0x2195b394fCC105C89BfEAA75D8A5267E82D3d76A',
+    },
+    token: tokens.cake,
+    quoteToken: tokens.cake,
+  },
+
+
 
 
 ]
