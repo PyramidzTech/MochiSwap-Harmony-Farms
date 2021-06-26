@@ -5,10 +5,20 @@ import { getWeb3NoAccount } from 'utils/web3'
 import MultiCallAbi from 'config/abi/Multicall.json'
 import ticketAbi from 'config/abi/lotteryNft.json'
 import lotteryAbi from 'config/abi/lottery.json'
+import barAbi from 'config/abi/mochiBar.json'
 import { DEFAULT_TOKEN_DECIMAL, LOTTERY_TICKET_PRICE } from 'config'
 import { AbiItem } from 'web3-utils'
 import { getMulticallAddress } from './addressHelpers'
 import { BIG_ZERO } from './bigNumber'
+import { useBar } from '../hooks/useContract'
+
+// export const testIt = async () => {
+//   const web3 = getWeb3NoAccount()
+//   const contract = new web3.eth.Contract(barAbi as unknown) as barAbi, 
+//   const res = await contract.methods.symbol().call()
+//   console.log(res)
+//   return "balbalbha"
+// }
 
 export const multiCall = async (abi, calls) => {
   const web3 = getWeb3NoAccount()

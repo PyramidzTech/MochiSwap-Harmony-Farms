@@ -11,6 +11,7 @@ import ToastListener from './components/ToastListener'
 import PageLoader from './components/PageLoader'
 import EasterEgg from './components/EasterEgg'
 import Pools from './views/Pools'
+import Bars from './views/Bars'
 import history from './routerHistory'
 
 // Route-based code splitting
@@ -54,6 +55,9 @@ const App: React.FC = () => {
             </Route>
             <Route path="/pools">
               <Farms />
+            </Route>
+            <Route path="/bars">
+              <Bars />
             </Route>
             <Route path="/lottery">
               <Lottery />

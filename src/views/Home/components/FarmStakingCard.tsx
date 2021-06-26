@@ -12,7 +12,7 @@ import CakeWalletBalance from './CakeWalletBalance'
 
 const getBackground = (theme: DefaultTheme) => {
   if (theme.isDark) {
-    return "url('/images/mochi11.svg')"
+    return "url('/images/mochi111.png')"
   }
   if (theme.isDark) {
     return "url('/images/')"
@@ -24,8 +24,8 @@ const StyledFarmStakingCard = styled(Card)`
   background-image:${({ theme }) => getBackground(theme)};
   background-size: 40%;
   background-repeat: no-repeat;
-  background-position: top -50px right -50px;
-  min-height: 376px;
+  background-position: top -30px right -30px;
+  min-height: 476px;
 `
 
 const Block = styled.div`

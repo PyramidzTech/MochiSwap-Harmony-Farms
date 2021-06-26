@@ -31,6 +31,11 @@ const config: MenuEntry[] = [
     href: '/pools',
   },
   {
+    label: 'xMOCHI (NEW!)',
+    icon: 'TicketIcon',
+    href: '/bars',
+  },
+  {
     label: 'Analytics',
     icon: 'InfoIcon',
     items: [

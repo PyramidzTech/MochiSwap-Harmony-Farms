@@ -281,8 +281,7 @@ const Farms: React.FC = () => {
           // .dividedBy(100000000).times(1.72)
           const price = onemoonPrice.times(farm.tokenPriceVsQuote).div(1.7)
           // console.log(price.toString(), farm.tokenAmount)
-          num = price.times(farm.tokenAmount).times(0.0000556)
-          num = new BigNumber(6302400)
+          num = price.times(farm.tokenAmount).times(0.0000480241).div(2)
         }
         if (farm.pid === 26) {
           const price = cakePrice.times(farm.tokenPriceVsQuote)

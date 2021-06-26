@@ -13,6 +13,7 @@ import {
   getBunnySpecialAddress,
   getCakeAddress,
   getLotteryAddress,
+  getBarAddress,
   getLotteryTicketAddress,
   getMasterChefAddress,
   getPointCenterIfoAddress,
@@ -37,6 +38,7 @@ import ifoV1Abi from 'config/abi/ifoV1.json'
 import ifoV2Abi from 'config/abi/ifoV2.json'
 import pointCenterIfo from 'config/abi/pointCenterIfo.json'
 import lotteryAbi from 'config/abi/lottery.json'
+import barAbi from 'config/abi/mochiBar.json'
 import lotteryTicketAbi from 'config/abi/lotteryNft.json'
 import masterChef from 'config/abi/masterchef.json'
 import sousChef from 'config/abi/sousChef.json'
@@ -98,6 +100,9 @@ export const getBunnySpecialContract = (web3?: Web3) => {
 }
 export const getLotteryContract = (web3?: Web3) => {
   return getContract(lotteryAbi, getLotteryAddress(), web3)
+}
+export const getBarContract = (web3?: Web3) => {
+  return getContract(barAbi, getBarAddress(), web3)
 }
 export const getLotteryTicketContract = (web3?: Web3) => {
   return getContract(lotteryTicketAbi, getLotteryTicketAddress(), web3)
