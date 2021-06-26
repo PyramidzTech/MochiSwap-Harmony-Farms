@@ -15,6 +15,14 @@ const tokens = {
     decimals: 18,
     projectLink: 'https://pancakeswap.finance/',
   },
+  xmochi: {
+    symbol: 'XMOCHI',
+    address: {
+      1666600000: '0x0dD740Db89B9fDA3Baadf7396DdAD702b6E8D6f5',
+    },
+    decimals: 18,
+    projectLink: 'https://pancakeswap.finance/',
+  },
   wbnb: {
     symbol: 'WBNB',
     address: {
