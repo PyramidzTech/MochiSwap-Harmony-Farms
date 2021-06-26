@@ -7,7 +7,7 @@ import {BigNumber} from 'bignumber.js'
 import { useBarName } from 'hooks/useBarName'
 import { ethers } from 'ethers'
 import useTokenBalance from 'hooks/useTokenBalance'
-import { getCakeAddress } from 'utils/addressHelpers'
+import { getCakeAddress, getMochiXAddress } from 'utils/addressHelpers'
 import { BIG_TEN } from 'utils/bigNumber'
 import DepositModal from '../Farms/components/DepositModal'
 
@@ -23,9 +23,10 @@ const Bars: React.FC = () => {
 
     // balances
     const mochiBalance = useTokenBalance(getCakeAddress())
-    const xBalance     = useTokenBalance(getCakeAddress())
+    const xBalance     = useTokenBalance(getMochiXAddress())
     const hmochiAddy   = getCakeAddress()
     const mochiBalanceFormatted = mochiBalance.div(BIG_TEN.pow(18))
+    const mochiDecimalFormatted = new BigNumber(mochiBalance).times(BIG_TEN.pow(18)).toString()
 
     const StakeMochiX = useCallback(async () => {
         try {
@@ -34,14 +35,14 @@ const Bars: React.FC = () => {
         //   if(allowance === 0){
         //     const approve = await contract.methods.approve(contract.options.address, ethers.constants.MaxUint256).send({ from: account })
         //   } 
-          const name = await contract.methods.enter("1").send({from: account, gas: 200000, value: 3})
+          const name = await contract.methods.enter(mochiDecimalFormatted).send({from: account, gas: 200000, value: 3})
           .on('transactionHash', (tx) => {
           // alert
           })
         } catch (e) {
           console.error(e)
         }
-      }, [contract, account])
+      }, [contract, account, mochiDecimalFormatted])
 
       const onPresentDeposit = useModal(
         <DepositModal max={max} onConfirm={StakeMochiX} tokenName={lpSymbol} addLiquidityUrl={addLiquidityUrl} />,
@@ -79,7 +80,7 @@ const Bars: React.FC = () => {
             1. Authorize the xMOCHI Contract  2. Stake hMOCHI and watch xMOCHI rewards come in!
         </p>
         <Button disabled={!account} onClick={StakeMochiX}>
-          STAKE hMOCHI
+          STAKE {mochiBalanceFormatted.toString()} hMOCHI
         </Button>
      </PageHeader>
     )
