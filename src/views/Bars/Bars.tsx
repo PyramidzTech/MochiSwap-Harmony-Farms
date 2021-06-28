@@ -55,7 +55,7 @@ const Bars: React.FC = () => {
         }
         // step 2. final stake on xmochi contract
         const name = await contract.methods
-        .enter(mochiBalance)
+        .enter(mochiDecimalFormatted)
         .send({from: account, gas: 200000})
         .on('transactionHash', (tx) => {
         console.log(tx)
@@ -63,7 +63,7 @@ const Bars: React.FC = () => {
         } catch (e) {
           console.error(e)
         }
-      }, [account, contract, hContract, mochiBalance])
+      }, [account, contract, hContract,mochiDecimalFormatted])
 
       const removeMochiX = useCallback(async () => {
         try {
