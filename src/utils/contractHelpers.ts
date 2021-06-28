@@ -39,6 +39,7 @@ import ifoV2Abi from 'config/abi/ifoV2.json'
 import pointCenterIfo from 'config/abi/pointCenterIfo.json'
 import lotteryAbi from 'config/abi/lottery.json'
 import barAbi from 'config/abi/mochiBar.json'
+import hMochiAbi from 'config/abi/hMochi.json'
 import lotteryTicketAbi from 'config/abi/lotteryNft.json'
 import masterChef from 'config/abi/masterchef.json'
 import sousChef from 'config/abi/sousChef.json'
@@ -85,6 +86,9 @@ export const getPointCenterIfoContract = (web3?: Web3) => {
 }
 export const getCakeContract = (web3?: Web3) => {
   return getContract(cakeAbi, getCakeAddress(), web3)
+}
+export const gethMochiAbi = (web3?: Web3) => {
+  return getContract(hMochiAbi, getCakeAddress(), web3)
 }
 export const getProfileContract = (web3?: Web3) => {
   return getContract(profileABI, getPancakeProfileAddress(), web3)

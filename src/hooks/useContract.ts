@@ -11,6 +11,7 @@ import {
   getIfoV2Contract,
   getLotteryContract,
   getBarContract,
+  gethMochiAbi,
   getLotteryTicketContract,
   getMasterchefContract,
   getPointCenterIfoContract,
@@ -79,6 +80,11 @@ export const useLottery = () => {
 export const useBar = () => {
   const web3 = useWeb3()
   return useMemo(() => getBarContract(web3), [web3])
+}
+
+export const useMochi = () => {
+  const web3 = useWeb3()
+  return useMemo(() => gethMochiAbi(web3), [web3])
 }
 
 export const useLotteryTicket = () => {
