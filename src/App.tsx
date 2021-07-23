@@ -56,7 +56,7 @@ const App: React.FC = () => {
             <Route path="/pools">
               <Farms />
             </Route>
-            <Route path="/bars">
+            <Route path="/xmochi">
               <Bars />
             </Route>
             <Route path="/lottery">

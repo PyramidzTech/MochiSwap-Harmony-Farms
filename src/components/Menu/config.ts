@@ -30,11 +30,11 @@ const config: MenuEntry[] = [
     icon: 'PoolIcon',
     href: '/pools',
   },
-  // {
-  //   label: 'xMOCHI (NEW!)',
-  //   icon: 'TicketIcon',
-  //   href: '/bars',
-  // },
+  {
+    label: 'xMOCHI (NEW!)',
+    icon: 'TicketIcon',
+    href: '/xmochi',
+  },
   {
     label: 'Analytics',
     icon: 'InfoIcon',
@@ -71,7 +71,7 @@ const config: MenuEntry[] = [
       },
       {
         label: 'Community Proposals',
-        href: 'https://docs.mochiswap.io/governance/proposals-and-voting',
+        href: 'https://gov.harmony.one/#/mochiswap',
       }
       // {
       //   label: 'CoinMarketCap',

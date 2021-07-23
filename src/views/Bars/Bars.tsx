@@ -6,7 +6,7 @@ import { useWeb3React } from '@web3-react/core'
 import {BigNumber} from 'bignumber.js'
 import { useBarName } from 'hooks/useBarName'
 import { ethers } from 'ethers'
-import useTokenBalance from 'hooks/useTokenBalance'
+import useTokenBalance, { useMochiBalance } from 'hooks/useTokenBalance'
 import { getCakeAddress, getMochiXAddress } from 'utils/addressHelpers'
 import { BIG_TEN } from 'utils/bigNumber'
 import { AlertTriangle } from 'react-feather'
@@ -24,11 +24,18 @@ const Bars: React.FC = () => {
     const { account } = useWeb3React()
 
     // balances
-    const mochiBalance = useTokenBalance(getCakeAddress())
-    const hmochiAddy   = getCakeAddress()
+    const mochiBalance  = useTokenBalance(getCakeAddress())
+    const mochiXBalance = useMochiBalance(getCakeAddress())
+
+    const hmochiAddy    = getCakeAddress()
     const mochiBalanceFormatted = mochiBalance.div(BIG_TEN.pow(18))
     const mochiDecimalFormatted = new BigNumber(mochiBalance).times(BIG_TEN.pow(18)).toString()
+    const mochiXFormatted = new BigNumber(mochiXBalance).div(BIG_TEN.pow(18)).toString()
 
+    let noXMochi = null
+    if(mochiXFormatted !== "0"){
+        noXMochi = "false"
+    }
     const xBalanceCheck = useCallback(async () => {
         try {
             const xBalance = await contract.methods.balanceOf(account).call()
@@ -49,13 +56,20 @@ const Bars: React.FC = () => {
     
     const StakeMochiX = useCallback(async () => {
         try {
-        const allowance = await hContract.methods.allowance(account, contract.options.address).call()
-        if(allowance === 0){
-            const approve = await hContract.methods.approve(contract.options.address, ethers.constants.MaxUint256).send({ from: account })
+        const hBalance = await hContract.methods.balanceOf(account).call()
+
+        const allowance = await hContract.methods
+            .allowance(account, contract.options.address)
+            .call()
+        // console.log(hBalance, allowance)
+        if(hBalance.toString().length > allowance.toString().length){
+            const approve = await hContract.methods
+            .approve(contract.options.address, ethers.constants.MaxUint256)
+            .send({ from: account })
         }
         // step 2. final stake on xmochi contract
         const name = await contract.methods
-        .enter(mochiDecimalFormatted)
+        .enter(hBalance)
         .send({from: account, gas: 200000})
         .on('transactionHash', (tx) => {
         console.log(tx)
@@ -63,7 +77,7 @@ const Bars: React.FC = () => {
         } catch (e) {
           console.error(e)
         }
-      }, [account, contract, hContract,mochiDecimalFormatted])
+      }, [account, contract, hContract])
 
       const removeMochiX = useCallback(async () => {
         try {
@@ -117,14 +131,16 @@ const Bars: React.FC = () => {
             2. Stake hMOCHI 
             <br />
             3. When you unstake xMOCHI, your original hMOCHI Balance will be higher!
+            <br />
+            4. Buy-backs happen roughly every 24-48 hours, if you unstake before the buybacks you will have no increased hMOCHI balance.
         </p>
         <Button disabled={!account} onClick={StakeMochiX}>
           STAKE {mochiBalanceFormatted.toString()} hMOCHI
         </Button>
         <br />
         <br />
-        <Button variant="secondary" disabled={!account} onClick={removeMochiX}>
-          UNSTAKE {} xMOCHI
+        <Button variant="secondary" disabled={(!account || noXMochi === null)} onClick={removeMochiX}>
+          UNSTAKE {mochiXFormatted} xMOCHI
         </Button>
      </PageHeader>
     )
