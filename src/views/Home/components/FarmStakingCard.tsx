@@ -9,7 +9,6 @@ import UnlockButton from 'components/UnlockButton'
 import CakeHarvestBalance from './CakeHarvestBalance'
 import CakeWalletBalance from './CakeWalletBalance'
 
-
 const getBackground = (theme: DefaultTheme) => {
   if (theme.isDark) {
     return "url('/images/mochi111.png')"
@@ -21,7 +20,7 @@ const getBackground = (theme: DefaultTheme) => {
 }
 
 const StyledFarmStakingCard = styled(Card)`
-  background-image:${({ theme }) => getBackground(theme)};
+  background-image: ${({ theme }) => getBackground(theme)};
   background-size: 40%;
   background-repeat: no-repeat;
   background-position: top -30px right -30px;

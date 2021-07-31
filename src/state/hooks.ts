@@ -187,7 +187,9 @@ export const usePriceBnbBusd = (): BigNumber => {
 export const usePriceOneMoonUSDC = (): BigNumber => {
   const onemoonUsdcFarm = useFarmFromPid(29)
   const bnbBusdPrice = usePriceBnbBusd()
-  const cakeBusdPrice = onemoonUsdcFarm.tokenPriceVsQuote ? bnbBusdPrice.times(onemoonUsdcFarm.tokenPriceVsQuote) : BIG_ZERO
+  const cakeBusdPrice = onemoonUsdcFarm.tokenPriceVsQuote
+    ? bnbBusdPrice.times(onemoonUsdcFarm.tokenPriceVsQuote)
+    : BIG_ZERO
   return cakeBusdPrice
 }
 
@@ -200,15 +202,15 @@ export const usePriceCakeBusd = (): BigNumber => {
 
 export const useTotalValue = (): BigNumber => {
   const { data: farmsLP } = useFarms()
-  const bnbPrice = usePriceBnbBusd();
-  const cakePrice = usePriceCakeBusd();
+  const bnbPrice = usePriceBnbBusd()
+  const cakePrice = usePriceCakeBusd()
   const oneMoonPriceBase = usePriceOneMoonUSDC()
 
-  let value = new BigNumber(0);
+  let value = new BigNumber(0)
   for (let i = 0; i < farmsLP.length; i++) {
     const farm = farmsLP[i]
     if (farm.lpTotalInQuoteToken) {
-      let val;
+      let val
       if (farm.pid === 0) {
         val = new BigNumber(2).times(farm.quoteTokenAmount)
       }
@@ -317,12 +319,12 @@ export const useTotalValue = (): BigNumber => {
         const price = cakePrice.times(farm.tokenPriceVsQuote)
         val = price.times(farm.tokenAmount)
       }
-      if(val){
-        value = value.plus(new BigNumber(val));
+      if (val) {
+        value = value.plus(new BigNumber(val))
       }
     }
   }
-  return value;
+  return value
 }
 
 // Block

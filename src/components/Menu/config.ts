@@ -72,7 +72,7 @@ const config: MenuEntry[] = [
       {
         label: 'Community Proposals',
         href: 'https://gov.harmony.one/#/mochiswap',
-      }
+      },
       // {
       //   label: 'CoinMarketCap',
       //   href: 'https://coinmarketcap.com/currencies/mochiswap/',

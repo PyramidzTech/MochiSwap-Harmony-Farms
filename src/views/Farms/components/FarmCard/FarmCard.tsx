@@ -106,7 +106,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, account }
   const isPromotedFarm = farm.token.symbol === 'CAKE'
 
   let removed2 = false
-  if(farm.pid === 25 || farm.pid === 26 || farm.pid === 27 ){
+  if (farm.pid === 25 || farm.pid === 26 || farm.pid === 27) {
     removed2 = true
   }
 

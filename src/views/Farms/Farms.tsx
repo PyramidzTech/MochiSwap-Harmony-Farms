@@ -156,11 +156,13 @@ const Farms: React.FC = () => {
   }, [isArchived, dispatch, account])
 
   // handle solo pool page
-  const soloFarms = [21,20,25,26,27];
+  const soloFarms = [21, 20, 25, 26, 27]
   // let activeFarms = farmsLP.filter((farm) => farm.pid !== 25 && farm.multiplier !== '0X' && !isArchivedPid(farm.pid))
   let activeFarms = farmsLP.filter((farm) => farm.multiplier !== '0X' && !isArchivedPid(farm.pid))
-  if (showSolo){
-    activeFarms = farmsLP.filter((farm) => soloFarms.includes(farm.pid) && farm.multiplier !== '0X' && !isArchivedPid(farm.pid))
+  if (showSolo) {
+    activeFarms = farmsLP.filter(
+      (farm) => soloFarms.includes(farm.pid) && farm.multiplier !== '0X' && !isArchivedPid(farm.pid),
+    )
   }
   const inactiveFarms = farmsLP.filter((farm) => farm.pid !== 0 && farm.multiplier === '0X' && !isArchivedPid(farm.pid))
   const archivedFarms = farmsLP.filter((farm) => isArchivedPid(farm.pid))
@@ -523,12 +525,12 @@ const Farms: React.FC = () => {
     setSortOption(option.value)
   }
 
-  let heading1 = "Farms"
-  let heading2 = "Stake Liquidity Pool (LP) Tokens to Earn High Yield!"
-  const heading3 = "*APR calculation display has been updated to similiary match VFAT to avoid confusion."
-  if(showSolo){
-    heading1 = "SOLO Pools"
-    heading2 = "Simple stake single assets to earn!"
+  let heading1 = 'Farms'
+  let heading2 = 'Stake Liquidity Pool (LP) Tokens to Earn High Yield!'
+  const heading3 = '*APR calculation display has been updated to similiary match VFAT to avoid confusion.'
+  if (showSolo) {
+    heading1 = 'SOLO Pools'
+    heading2 = 'Simple stake single assets to earn!'
   }
 
   return (
@@ -540,9 +542,7 @@ const Farms: React.FC = () => {
         <Heading scale="lg" color="text">
           {heading2}
         </Heading>
-        <p style={{color: "green"}}>
-          {heading3}
-        </p>
+        <p style={{ color: 'green' }}>{heading3}</p>
       </PageHeader>
       <Page>
         <ControlContainer>

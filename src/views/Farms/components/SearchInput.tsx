@@ -38,9 +38,9 @@ const SearchInput: React.FC<Props> = ({ onChange: onChangeCallback }) => {
   }
   const { pathname } = useLocation()
   const showSolo = pathname.includes('pools')
-  let paceholderText = "Search Farms"
-  if(showSolo){
-    paceholderText = "SOLO Pools"
+  let paceholderText = 'Search Farms'
+  if (showSolo) {
+    paceholderText = 'SOLO Pools'
   }
 
   return (

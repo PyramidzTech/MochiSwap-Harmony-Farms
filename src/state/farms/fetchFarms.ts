@@ -68,27 +68,23 @@ const fetchFarms = async (farmsToFetch: FarmConfig[]) => {
       // Amount of token in the LP that are considered staking (i.e amount of token * lp ratio)
       let tokenAmount = new BigNumber(tokenBalanceLP).div(BIG_TEN.pow(tokenDecimals)).times(lpTokenRatio)
       // handle solo pools
-      if(farmConfig.pid === 20){
+      if (farmConfig.pid === 20) {
         tokenAmount = new BigNumber(lpTokenBalanceMC).div(BIG_TEN.pow(tokenDecimals))
       }
-      if(farmConfig.pid === 21){
+      if (farmConfig.pid === 21) {
         tokenAmount = new BigNumber(lpTokenBalanceMC).div(BIG_TEN.pow(tokenDecimals))
       }
-      if(farmConfig.pid === 26){
+      if (farmConfig.pid === 26) {
         tokenAmount = new BigNumber(lpTokenBalanceMC).div(BIG_TEN.pow(tokenDecimals))
       }
-      if(farmConfig.pid === 25){
+      if (farmConfig.pid === 25) {
         tokenAmount = new BigNumber(lpTokenBalanceMC).div(BIG_TEN.pow(9))
       }
-      let quoteTokenAmount = new BigNumber(quoteTokenBalanceLP)
-        .div(BIG_TEN.pow(quoteTokenDecimals))
-        .times(lpTokenRatio)
+      let quoteTokenAmount = new BigNumber(quoteTokenBalanceLP).div(BIG_TEN.pow(quoteTokenDecimals)).times(lpTokenRatio)
 
-      if(farmConfig.pid === 26){
+      if (farmConfig.pid === 26) {
         // lpTotalInQuoteToken = new BigNumber(quoteTokenBalanceLP).div(DEFAULT_TOKEN_DECIMAL).times(lpTokenRatio)
-        quoteTokenAmount = new BigNumber(tokenAmount)
-        .div(BIG_TEN.pow(quoteTokenDecimals))
-        .times(lpTokenRatio)
+        quoteTokenAmount = new BigNumber(tokenAmount).div(BIG_TEN.pow(quoteTokenDecimals)).times(lpTokenRatio)
       }
 
       const [info, totalAllocPoint] = await multicall(masterchefABI, [

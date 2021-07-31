@@ -38,9 +38,9 @@ const StakeAction: React.FC<FarmCardActionsProps> = ({
   const { onStake } = useStake(pid)
   const { onUnstake } = useUnstake(pid)
   const location = useLocation()
-  
+
   const displayBalance = useCallback(() => {
-    const stakedBalanceNumber = pid === 25? getBalanceNumber(stakedBalance, 9) : getBalanceNumber(stakedBalance)
+    const stakedBalanceNumber = pid === 25 ? getBalanceNumber(stakedBalance, 9) : getBalanceNumber(stakedBalance)
     if (stakedBalanceNumber > 0 && stakedBalanceNumber < 0.0001) {
       return getFullDisplayBalance(stakedBalance, 9).toLocaleString()
     }

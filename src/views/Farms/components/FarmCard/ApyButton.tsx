@@ -1,6 +1,6 @@
 import React from 'react'
 import BigNumber from 'bignumber.js'
-import { IconButton, useModal, CalculateIcon, LinkExternal} from '@pancakeswap/uikit'
+import { IconButton, useModal, CalculateIcon, LinkExternal } from '@pancakeswap/uikit'
 import ApyCalculatorModal from 'components/ApyCalculatorModal'
 import { useTranslation } from 'contexts/Localization'
 import styled from 'styled-components'
@@ -30,10 +30,11 @@ const ApyButton: React.FC<ApyButtonProps> = ({ lpLabel, cakePrice, apr, addLiqui
     event.stopPropagation()
     onPresentApyModal()
   }
-  
 
   return (
-    <StyledLinkExternal target="_blank" href="https://vfat.tools/harmony/mochi/">{t('VFAT')}</StyledLinkExternal>
+    <StyledLinkExternal target="_blank" href="https://vfat.tools/harmony/mochi/">
+      {t('VFAT')}
+    </StyledLinkExternal>
     // <IconButton onClick={handleClickButton} variant="text" scale="sm" ml="4px">
     //   <CalculateIcon width="18px" />
     // </IconButton>

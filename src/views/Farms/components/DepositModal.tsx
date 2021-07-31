@@ -7,7 +7,6 @@ import ModalInput from 'components/ModalInput'
 import { useTranslation } from 'contexts/Localization'
 import { getFullDisplayBalance } from 'utils/formatBalance'
 
-
 interface DepositModalProps {
   max: BigNumber
   onConfirm: (amount: string) => void
@@ -20,13 +19,13 @@ const DepositModal: React.FC<DepositModalProps> = ({ max, onConfirm, onDismiss, 
   const [val, setVal] = useState('')
   const [pendingTx, setPendingTx] = useState(false)
   const { t } = useTranslation()
-  
-  const decimals = tokenName === "ONEMOON"? 9 : 18;
+
+  const decimals = tokenName === 'ONEMOON' ? 9 : 18
   // const fullBalance = useMemo(() => {
   //   return getFullDisplayBalance(max)
   // }, [max])
   const fullBalance = getFullDisplayBalance(max, decimals)
-  
+
   const valNumber = new BigNumber(val)
   const fullBalanceNumber = new BigNumber(fullBalance)
 

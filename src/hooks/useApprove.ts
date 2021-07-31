@@ -5,7 +5,7 @@ import { ethers } from 'ethers'
 import { useAppDispatch } from 'state'
 import { updateUserAllowance, fetchFarmUserDataAsync } from 'state/actions'
 import { approve } from 'utils/callHelpers'
-import { useMasterchef, useCake, useSousChef, useLottery, useBar} from './useContract'
+import { useMasterchef, useCake, useSousChef, useLottery, useBar } from './useContract'
 
 // Approve a Farm
 export const useApprove = (lpContract: Contract) => {

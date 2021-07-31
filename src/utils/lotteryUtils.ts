@@ -14,7 +14,7 @@ import { useBar } from '../hooks/useContract'
 
 // export const testIt = async () => {
 //   const web3 = getWeb3NoAccount()
-//   const contract = new web3.eth.Contract(barAbi as unknown) as barAbi, 
+//   const contract = new web3.eth.Contract(barAbi as unknown) as barAbi,
 //   const res = await contract.methods.symbol().call()
 //   console.log(res)
 //   return "balbalbha"

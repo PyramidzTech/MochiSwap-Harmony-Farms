@@ -24,7 +24,7 @@ const Row = styled.div`
 `
 
 const TwitterCard = () => {
-//   const TranslateString = useI18n()
+  //   const TranslateString = useI18n()
 
   return (
     <StyledTwitterCard>
@@ -32,17 +32,17 @@ const TwitterCard = () => {
         <Heading size="xl" mb="24px">
           Announcements
         </Heading>
-        <Timeline 
+        <Timeline
           dataSource={{
             sourceType: 'profile',
-            screenName: 'mochiswap'
+            screenName: 'mochiswap',
           }}
           options={{
             height: '350',
-            chrome: "noheader, nofooter, noborders",
-            width: "900",
-            color: "#22cac5",
-            theme: "light"
+            chrome: 'noheader, nofooter, noborders',
+            width: '900',
+            color: '#22cac5',
+            theme: 'light',
           }}
         />
       </CardBody>

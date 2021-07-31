@@ -94,7 +94,7 @@ const farms: FarmConfig[] = [
     token: tokens.sushi,
     quoteToken: tokens.one,
   },
-  
+
   {
     pid: 7,
     lpSymbol: 'BNB-bMOCHI',
@@ -114,7 +114,7 @@ const farms: FarmConfig[] = [
     token: tokens.bmochi,
     quoteToken: tokens.bmochi,
   },
-  
+
   {
     pid: 3,
     lpSymbol: 'hMOCHI-ONE',
@@ -185,7 +185,6 @@ const farms: FarmConfig[] = [
     quoteToken: tokens.cake,
   },
 
-
   {
     pid: 19,
     lpSymbol: 'ONE-WBTC',
@@ -195,7 +194,6 @@ const farms: FarmConfig[] = [
     token: tokens.one,
     quoteToken: tokens.one,
   },
-
 
   {
     pid: 21,
@@ -226,7 +224,6 @@ const farms: FarmConfig[] = [
     token: tokens.one,
     quoteToken: tokens.one,
   },
-
 
   {
     pid: 22,
@@ -368,7 +365,6 @@ const farms: FarmConfig[] = [
     quoteToken: tokens.safemoon,
   },
 
-
   {
     pid: 38,
     lpSymbol: 'SAFEMOON-hMOCHI',
@@ -378,10 +374,6 @@ const farms: FarmConfig[] = [
     token: tokens.cake,
     quoteToken: tokens.cake,
   },
-
-
-
-
 ]
 
 export default farms

@@ -17,9 +17,9 @@ const TotalValueLockedCard = () => {
   const { t } = useTranslation()
   // const data = useGetStats()
   // const tvl = data ? data.total_value_locked_all.toLocaleString('en-US', { maximumFractionDigits: 0 }) : null
-  let totalValue = useTotalValue();
+  let totalValue = useTotalValue()
   totalValue = totalValue.decimalPlaces(0)
-  const commas = totalValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  const commas = totalValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
   return (
     <StyledTotalValueLockedCard>
       <CardBody>

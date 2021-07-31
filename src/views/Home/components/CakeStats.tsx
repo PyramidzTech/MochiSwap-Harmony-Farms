@@ -29,15 +29,15 @@ const CakeStats = () => {
 
   const totalSupply = useTotalSupply()
   const burnedBalance = useBurnedBalance(getCakeAddress())
-  const circSupply = totalSupply ? totalSupply.minus(burnedBalance) : new BigNumber(0);
-  const cakeSupply = getBalanceNumber(circSupply);
+  const circSupply = totalSupply ? totalSupply.minus(burnedBalance) : new BigNumber(0)
+  const cakeSupply = getBalanceNumber(circSupply)
 
-  const farms = useFarms();
-  const cubPrice = usePriceCakeBusd();
-  const marketCap = cubPrice.times(circSupply);
+  const farms = useFarms()
+  const cubPrice = usePriceCakeBusd()
+  const marketCap = cubPrice.times(circSupply)
   const maxBurnSupply = new BigNumber(100000000000000000000000000)
-  const maxBurnTotal =  maxBurnSupply.minus(burnedBalance)
-  const totalMarketcap = cubPrice.times(new BigNumber(100000000000000000000000000));
+  const maxBurnTotal = maxBurnSupply.minus(burnedBalance)
+  const totalMarketcap = cubPrice.times(new BigNumber(100000000000000000000000000))
 
   return (
     <StyledCakeStats>
@@ -50,11 +50,15 @@ const CakeStats = () => {
           {cakeSupply && <CardValue fontSize="14px" value={cakeSupply} decimals={0} />}
         </Row>
         <Row>
-          <Text fontSize="14px" color="#22cac5">Total hMOCHI Burned</Text>
+          <Text fontSize="14px" color="#22cac5">
+            Total hMOCHI Burned
+          </Text>
           <CardValue fontSize="14px" value={getBalanceNumber(burnedBalance)} decimals={0} />
         </Row>
         <Row>
-          <Text fontSize="14px" color="">Max hMOCHI Ever with Burn</Text>
+          <Text fontSize="14px" color="">
+            Max hMOCHI Ever with Burn
+          </Text>
           <CardValue fontSize="14px" value={getBalanceNumber(maxBurnTotal)} decimals={0} />
         </Row>
         <Row>

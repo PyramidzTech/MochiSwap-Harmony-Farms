@@ -15,7 +15,6 @@ interface FarmCardActionsProps {
 }
 
 const HarvestAction: React.FC<FarmCardActionsProps> = ({ earnings, pid }) => {
-
   const { account } = useWeb3React()
   const { t } = useTranslation()
   const [pendingTx, setPendingTx] = useState(false)
