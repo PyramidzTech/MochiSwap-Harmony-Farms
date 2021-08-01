@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Flex, Heading, useModal, Won } from '@pancakeswap/uikit'
+import { Button, Flex, Heading, useModal } from '@mochiswap/huikit'
 import { useProfile } from 'state/hooks'
 import { useTranslation } from 'contexts/Localization'
 import ClaimNftAndCakeModal, { useCanClaim } from './ClaimGiftModal'
@@ -29,11 +29,6 @@ const ProfileHeader = () => {
           </Heading>
           {hasProfile && <Button onClick={onEditProfileModal}>{t('Edit Profile')}</Button>}
         </div>
-        {canClaim && (
-          <Button variant="tertiary" onClick={onPresentClaimGiftModal} startIcon={<Won />}>
-            {t("You've got a gift to claim!")}
-          </Button>
-        )}
       </Flex>
     </HeaderWrapper>
   )

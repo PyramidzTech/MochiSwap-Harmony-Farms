@@ -1,5 +1,5 @@
 import React from 'react'
-import { Tag, VerifiedIcon, CommunityIcon, BinanceIcon, RefreshIcon, AutoRenewIcon } from '@pancakeswap/uikit'
+import { Tag, VerifiedIcon, CommunityIcon, BinanceIcon,  AutoRenewIcon } from '@mochiswap/huikit'
 
 const CoreTag = (props) => (
   <Tag variant="secondary" outline startIcon={<VerifiedIcon width="18px" color="secondary" mr="4px" />} {...props}>
@@ -26,7 +26,7 @@ const DualTag = (props) => (
 )
 
 const ManualPoolTag = (props) => (
-  <Tag variant="secondary" outline startIcon={<RefreshIcon width="18px" color="secondary" mr="4px" />} {...props}>
+  <Tag variant="secondary" outline startIcon={<AutoRenewIcon width="18px" color="secondary" mr="4px" />} {...props}>
     Manual
   </Tag>
 )

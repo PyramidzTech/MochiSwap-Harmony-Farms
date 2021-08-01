@@ -8,7 +8,7 @@ interface PreviewProps {
 }
 
 const Container = styled.div`
-  background-color: ${({ theme }) => theme.colors.borderColor};
+  background-color: rgba(0,0,0,0);
   position: relative;
   width: 100%;
   overflow: hidden;

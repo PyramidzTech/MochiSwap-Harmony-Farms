@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useWeb3React } from '@web3-react/core'
 import styled from 'styled-components'
-import { AutoRenewIcon, Button, Flex } from '@pancakeswap/uikit'
+import { AutoRenewIcon, Button, Flex } from '@mochiswap/huikit'
 import { Achievement } from 'state/types'
 import useToast from 'hooks/useToast'
 import { useTranslation } from 'contexts/Localization'
@@ -18,7 +18,7 @@ interface AchievementRowProps {
 }
 
 const StyledAchievementRow = styled(Flex)`
-  border-bottom: 1px solid ${({ theme }) => theme.colors.borderColor};
+  border-bottom: 1px solid none;
   padding-bottom: 16px;
   padding-top: 16px;
 `

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, Text, Button, Heading, useModal, Skeleton } from '@pancakeswap/uikit'
+import { Flex, Text, Button, Heading, useModal, Skeleton } from '@mochiswap/huikit'
 import styled from 'styled-components'
 import BigNumber from 'bignumber.js'
 import { Token } from 'config/constants/types'

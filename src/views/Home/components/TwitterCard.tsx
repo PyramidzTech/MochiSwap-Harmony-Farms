@@ -1,14 +1,16 @@
 import React from 'react'
-import { Card, CardBody, Heading, Text } from '@pancakeswap/uikit'
+import styled, { DefaultTheme } from 'styled-components'
+import { Card, CardBody, Heading, Text } from '@mochiswap/huikit'
 import BigNumber from 'bignumber.js/bignumber'
-import styled from 'styled-components'
 import { Timeline } from 'react-twitter-widgets'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { useTotalSupply, useBurnedBalance } from 'hooks/useTokenBalance'
 // import useI18n from 'hooks/useI18n'
 import { getCakeAddress } from 'utils/addressHelpers'
+import useTheme from 'hooks/useTheme'
 import CardValue from './CardValue'
 import { useFarms } from '../../../state/hooks'
+
 
 const StyledTwitterCard = styled(Card)`
   margin-left: auto;
@@ -25,7 +27,7 @@ const Row = styled.div`
 
 const TwitterCard = () => {
   //   const TranslateString = useI18n()
-
+  const { theme } = useTheme()
   return (
     <StyledTwitterCard>
       <CardBody>
@@ -33,17 +35,15 @@ const TwitterCard = () => {
           Announcements
         </Heading>
         <Timeline
-          dataSource={{
-            sourceType: 'profile',
-            screenName: 'mochiswap',
-          }}
-          options={{
-            height: '350',
-            chrome: 'noheader, nofooter, noborders',
-            width: '900',
-            color: '#22cac5',
-            theme: 'light',
-          }}
+        dataSource={{
+          sourceType: 'profile',
+          screenName: 'mochiswap'
+        }}
+        options={{
+          height: '400',
+          id: "profile:mochiswap",
+          theme: theme.isDark ? 'dark' : 'light'
+        }}
         />
       </CardBody>
     </StyledTwitterCard>

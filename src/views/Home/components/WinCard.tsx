@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Heading, Card, CardBody, Flex, ArrowForwardIcon, Image } from '@pancakeswap/uikit'
+import { Heading, Card, CardBody, Flex, ArrowForwardIcon, Image } from '@mochiswap/huikit'
 import { NavLink } from 'react-router-dom'
 import { useTranslation } from 'contexts/Localization'
 import Countdown from 'react-countdown'

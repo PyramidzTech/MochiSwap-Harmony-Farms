@@ -11,7 +11,7 @@ import {
   Flex,
   NotificationDot,
   Link as UiKitLink,
-} from '@pancakeswap/uikit'
+} from '@mochiswap/huikit'
 import { useTranslation } from 'contexts/Localization'
 
 const ButtonText = styled(Text)`

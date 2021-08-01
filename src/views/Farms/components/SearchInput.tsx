@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react'
-import { Input } from '@pancakeswap/uikit'
+import { Input } from '@mochiswap/huikit'
 import styled from 'styled-components'
 import debounce from 'lodash/debounce'
 import { useLocation } from 'react-router-dom'

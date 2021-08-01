@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Flex, Text, Button, IconButton, AddIcon, MinusIcon, useModal, Skeleton } from '@pancakeswap/uikit'
+import { Flex, Text, Button, IconButton, AddIcon, MinusIcon, useModal, Skeleton } from '@mochiswap/huikit'
 import BigNumber from 'bignumber.js'
 import { useTranslation } from 'contexts/Localization'
 import { getBalanceNumber, getDecimalAmount } from 'utils/formatBalance'

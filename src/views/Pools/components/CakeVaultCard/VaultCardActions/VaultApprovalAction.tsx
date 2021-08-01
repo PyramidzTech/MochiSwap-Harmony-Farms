@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, AutoRenewIcon, Skeleton } from '@pancakeswap/uikit'
+import { Button, AutoRenewIcon, Skeleton } from '@mochiswap/huikit'
 import { useWeb3React } from '@web3-react/core'
 import { ethers } from 'ethers'
 import { useTranslation } from 'contexts/Localization'

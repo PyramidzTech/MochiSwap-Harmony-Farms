@@ -1,7 +1,7 @@
 /* eslint-disable no-debugger */
 
 import React, { useState, useRef, useEffect } from 'react'
-import { Button, Skeleton } from '@pancakeswap/uikit'
+import { Button, Skeleton } from '@mochiswap/huikit'
 import BigNumber from 'bignumber.js'
 import { FarmWithStakedValue } from 'views/Farms/components/FarmCard/FarmCard'
 import { getBalanceNumber } from 'utils/formatBalance'

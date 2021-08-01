@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, CardBody, Heading, Text } from '@pancakeswap/uikit'
+import { Card, CardBody, Heading, Text } from '@mochiswap/huikit'
 import styled from 'styled-components'
 import { getBalanceNumber } from 'utils/formatBalance'
 import BigNumber from 'bignumber.js/bignumber'

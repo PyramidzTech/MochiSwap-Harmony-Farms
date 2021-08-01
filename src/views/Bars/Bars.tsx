@@ -1,5 +1,5 @@
 import React, { useEffect, useCallback, useState, useMemo, useRef } from 'react'
-import { Heading, Flex, Image, Button, Skeleton, useModal } from '@pancakeswap/uikit'
+import { Heading, Flex, Image, Button, Skeleton, useModal } from '@mochiswap/huikit'
 import { useBar, useCake } from 'hooks/useContract'
 import PageHeader from 'components/PageHeader'
 import { useWeb3React } from '@web3-react/core'

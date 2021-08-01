@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react'
 import styled, { DefaultTheme } from 'styled-components'
-import { Heading, Card, CardBody, Button } from '@pancakeswap/uikit'
+import { Heading, Card, CardBody, Button } from '@mochiswap/huikit'
 import { useWeb3React } from '@web3-react/core'
 import { useTranslation } from 'contexts/Localization'
 import { useAllHarvest } from 'hooks/useHarvest'
@@ -11,16 +11,13 @@ import CakeWalletBalance from './CakeWalletBalance'
 
 const getBackground = (theme: DefaultTheme) => {
   if (theme.isDark) {
-    return "url('/images/mochi111.png')"
-  }
-  if (theme.isDark) {
-    return "url('/images/')"
-  }
-  return 'linear-gradient(139.73deg, #E6FDFF 0%, #EFF4F5 46.87%, #F3EFFF 100%)'
+    return "rgba(255,255,255,0.1)"
+  } 
+  return "rgba(255,255,255,0.5)"
 }
 
 const StyledFarmStakingCard = styled(Card)`
-  background-image: ${({ theme }) => getBackground(theme)};
+  background-color: ${({ theme }) => getBackground(theme)};
   background-size: 40%;
   background-repeat: no-repeat;
   background-position: top -30px right -30px;
@@ -36,7 +33,7 @@ const CardImage = styled.img`
 `
 
 const Label = styled.div`
-  color: ${({ theme }) => theme.colors.oneColor};
+  color: #00AEE9;
   font-size: 14px;
 `
 

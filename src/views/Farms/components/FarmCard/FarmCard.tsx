@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import BigNumber from 'bignumber.js'
 import styled, { keyframes } from 'styled-components'
-import { Flex, Text, Skeleton } from '@pancakeswap/uikit'
+import { Flex, Text, Skeleton } from '@mochiswap/huikit'
 import { Farm } from 'state/types'
 import { provider as ProviderType } from 'web3-core'
 import { useTranslation } from 'contexts/Localization'
@@ -57,7 +57,7 @@ const FCard = styled.div<{ isPromotedFarm: boolean }>`
 `
 
 const Divider = styled.div`
-  background-color: ${({ theme }) => theme.colors.borderColor};
+  background-color: rgba(0,0,0,0);
   height: 1px;
   margin: 28px auto;
   width: 100%;

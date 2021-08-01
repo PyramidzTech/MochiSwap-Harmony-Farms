@@ -1,7 +1,7 @@
 /* eslint-disable no-debugger */
 import BigNumber from 'bignumber.js'
 import React, { useCallback, useMemo, useState } from 'react'
-import { Button, Modal, LinkExternal } from '@pancakeswap/uikit'
+import { Button, Modal, LinkExternal } from '@mochiswap/huikit'
 import ModalActions from 'components/ModalActions'
 import ModalInput from 'components/ModalInput'
 import { useTranslation } from 'contexts/Localization'

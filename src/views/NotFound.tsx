@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Button, Heading, Text, LogoIcon } from '@pancakeswap/uikit'
+import { Button, Heading, Text, LogoIcon } from '@mochiswap/huikit'
 import Page from 'components/layout/Page'
 import { useTranslation } from 'contexts/Localization'
 

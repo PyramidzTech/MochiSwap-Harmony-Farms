@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Flex, Heading, Text, Link, useTooltip } from '@pancakeswap/uikit'
+import { Flex, Heading, Text, Link, useTooltip } from '@mochiswap/huikit'
 
 export interface TimerProps {
   timerStage?: string
