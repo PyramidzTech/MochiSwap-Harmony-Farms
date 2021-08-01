@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Heading, Text, BaseLayout } from '@pancakeswap/uikit'
+import { Text, BaseLayout } from '@pancakeswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import Page from 'components/layout/Page'
 import FarmStakingCard from 'views/Home/components/FarmStakingCard'
@@ -14,24 +14,40 @@ import WinCard from 'views/Home/components/WinCard'
 
 const Hero = styled.div`
   align-items: center;
-  background-image: url('/images/pan-bg-mobile4444.svg');
-  background-size: 150px;
+  background-image: url('/images/farm-bg.png');
+  background-size: auto;
   background-repeat: no-repeat;
   background-position: top center;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   flex-direction: column;
   margin: auto;
   margin-bottom: 32px;
-  padding-top: 116px;
-  text-align: center;
+  text-align: left;
+  border-radius: 30px;
 
   ${({ theme }) => theme.mediaQueries.lg} {
-    background-image: url('/images/2logos.png'), url('/images/pan-bg333.svg');
-    background-position: left center, right center;
+    background-image:  url('/images/farm-bg.png');
+    background-position: right center;
+    opacity: 0.6;
     height: 165px;
     padding-top: 0;
   }
+`
+
+const Heading = styled.div`
+  font-size: 2em;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  color: rgba(255,255,255,1);
+  font-weight: 400;
+  text-align: left;
+  background: rgba(0,0,0,0.8);
+  padding-left: 70px;
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
 `
 
 const Cards = styled(BaseLayout)`
@@ -84,21 +100,21 @@ const Home: React.FC = () => {
   return (
     <Page>
       <Hero>
-        <Heading as="h1" scale="xl" mb="24px" color="secondary">
-          {t('PancakeSwap')}
+        <Heading>
+          Welcome to the MOCHISWAP Harmony ONE Yield Farms!!!
         </Heading>
-        <Text>{t('The #1 AMM and yield farm on Binance Smart Chain.')}</Text>
+        {/* <Text>{t('The #1 AMM and yield farm on Binance Smart Chain.')}</Text> */}
       </Hero>
       <div>
         <Cards>
           <FarmStakingCard />
           <TwitterCard />
         </Cards>
-        <CTACards>
+        {/* <CTACards>
           <EarnAPRCard />
           <EarnAssetCard />
           <WinCard />
-        </CTACards>
+        </CTACards> */}
         <Cards>
           <CakeStats />
           <TotalValueLockedCard />
