@@ -6,7 +6,7 @@ BigNumber.config({
   DECIMAL_PLACES: 80,
 })
 
-export const BSC_BLOCK_TIME = 3
+export const BSC_BLOCK_TIME = 2
 
 // CAKE_PER_BLOCK details
 // 40 CAKE is minted per block
@@ -16,8 +16,8 @@ export const BSC_BLOCK_TIME = 3
 // CAKE_PER_BLOCK in config/index.ts = 40 as we only change the amount sent to the burn pool which is effectively a farm.
 // CAKE/Block in src/views/Home/components/CakeStats.tsx = 20 (40 - Amount sent to burn pool)
 
-export const CAKE_PER_BLOCK = new BigNumber(2)
-export const BLOCKS_PER_YEAR = new BigNumber((60 / BSC_BLOCK_TIME) * 60 * 24 * 365) // 10512000
+export const CAKE_PER_BLOCK = new BigNumber(1) // this sux because it can only be a min of 1 with no decmials
+export const BLOCKS_PER_YEAR = new BigNumber((60 / BSC_BLOCK_TIME) * 60 * 24 * 310) // 10512000 // 310 is .85 of 365 - yes what a hack.
 export const CAKE_PER_YEAR = new BigNumber(1000000)
 export const BASE_URL = 'https://harmony.mochiswap.io'
 export const BASE_EXCHANGE_URL = 'https://one.mochiswap.io'
