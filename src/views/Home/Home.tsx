@@ -36,7 +36,8 @@ const Hero = styled.div`
 `
 
 const Heading = styled.div`
-  font-size: 2em;
+  padding-top: 15px;
+  font-size: 1.5em;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -44,7 +45,7 @@ const Heading = styled.div`
   font-weight: 400;
   text-align: left;
   background: rgba(0,0,0,0.8);
-  padding-left: 70px;
+  text-align: center;
   width: 100%;
   height: 100%;
   border-radius: 30px;

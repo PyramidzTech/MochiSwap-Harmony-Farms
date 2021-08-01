@@ -1,5 +1,6 @@
 import BigNumber from 'bignumber.js'
-import { BLOCKS_PER_YEAR, CAKE_PER_BLOCK } from 'config'
+import { BLOCKS_PER_YEAR, CAKE_PER_BLOCK, CAKE_PER_YEAR } from '../config'
+// import lpAprs from '../config/constants/lpAprs.json'
 
 /**
  * Get the APR value in %
@@ -32,6 +33,52 @@ export const getFarmApr = (poolWeight: BigNumber, cakePriceUsd: BigNumber, poolL
   const yearlyCakeRewardAllocation = CAKE_PER_BLOCK.times(BLOCKS_PER_YEAR).times(poolWeight)
   const apr = yearlyCakeRewardAllocation.times(cakePriceUsd).div(poolLiquidityUsd).times(400)
   return apr.isNaN() || !apr.isFinite() ? null : apr.toNumber()
+}
+
+/**
+ * Get farm APR value in %
+ * @param poolWeight allocationPoint / totalAllocationPoint
+ * @param cakePriceUsd Cake price in USD
+ * @param poolLiquidityUsd Total pool liquidity in USD
+ * @returns
+ */
+ export const getFarmAprV2 = (
+  poolWeight: BigNumber,
+  cakePriceUsd: BigNumber,
+  poolLiquidityUsd: BigNumber,
+  farmAddress: string,
+): { cakeRewardsApr: number; lpRewardsApr: number } => {
+  const yearlyCakeRewardAllocation = CAKE_PER_YEAR.times(poolWeight)
+  const cakeRewardsApr = yearlyCakeRewardAllocation.times(cakePriceUsd).div(poolLiquidityUsd).times(100)
+  let cakeRewardsAprAsNumber = null
+  if (!cakeRewardsApr.isNaN() && cakeRewardsApr.isFinite()) {
+    cakeRewardsAprAsNumber = cakeRewardsApr.toNumber()
+  }
+  const lpRewardsApr = 0; // lpAprs[farmAddress?.toLocaleLowerCase()] ?? 0
+  return { cakeRewardsApr: cakeRewardsAprAsNumber, lpRewardsApr }
+}
+
+/**
+ * Get farm APR value in %
+ * @param poolWeight allocationPoint / totalAllocationPoint
+ * @param cakePriceUsd Cake price in USD
+ * @param poolLiquidityUsd Total pool liquidity in USD
+ * @returns
+ */
+ export const getVaultApr = (
+  poolWeight: BigNumber,
+  cakePriceUsd: BigNumber,
+  poolLiquidityUsd: BigNumber,
+  farmAddress: string,
+): { cakeRewardsApr: number; lpRewardsApr: number } => {
+  const yearlyCakeRewardAllocation = CAKE_PER_YEAR.times(poolWeight)
+  const cakeRewardsApr = yearlyCakeRewardAllocation.times(cakePriceUsd).div(poolLiquidityUsd).times(100)
+  let cakeRewardsAprAsNumber = null
+  if (!cakeRewardsApr.isNaN() && cakeRewardsApr.isFinite()) {
+    cakeRewardsAprAsNumber = cakeRewardsApr.toNumber()
+  }
+  const lpRewardsApr = 0 // lpAprs[farmAddress?.toLocaleLowerCase()] ?? 0
+  return { cakeRewardsApr: cakeRewardsAprAsNumber, lpRewardsApr }
 }
 
 export default null

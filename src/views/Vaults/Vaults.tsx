@@ -15,7 +15,7 @@ import usePersistState from 'hooks/usePersistState'
 import { Farm } from 'state/types'
 import { useTranslation } from 'contexts/Localization'
 import { getBalanceNumber } from 'utils/formatBalance'
-import { getFarmApr } from 'utils/apr'
+import { getVaultApr } from 'utils/apr'
 import { orderBy } from 'lodash'
 import { getAddress } from 'utils/addressHelpers'
 import isArchivedPid from 'utils/farmHelpers'
@@ -182,162 +182,15 @@ const Farms: React.FC = () => {
   const farmsList = useCallback(
     (farmsToDisplay: Farm[]): FarmWithStakedValue[] => {
       let farmsToDisplayWithAPR: FarmWithStakedValue[] = farmsToDisplay.map((farm) => {
-        if (!farm.lpTotalInQuoteToken || !prices) {
+        if (!farm.lpTotalInQuoteToken || false ) {
           return farm
         }
+        const totalLiquidity = new BigNumber(1) // new BigNumber(farm.lpTotalInQuoteToken).times(farm.quoteToken.busdPrice)
+        const { cakeRewardsApr, lpRewardsApr } = isActive
+          ? getVaultApr(new BigNumber(farm.poolWeight), cakePrice, totalLiquidity, '0x')
+          : { cakeRewardsApr: 0, lpRewardsApr: 0 }
 
-        const quoteTokenPriceUsd = prices[getAddress(farm.quoteToken.address).toLowerCase()]
-
-        // manually assign liq and apr
-        let num = cakePrice
-        if (farm.pid === 0) {
-          num = new BigNumber(2).times(farm.quoteTokenAmount)
-        }
-        if (farm.pid === 6) {
-          num = new BigNumber(2).times(farm.quoteTokenAmount)
-        }
-        if (farm.pid === 1) {
-          const price = cakePrice.times(farm.tokenPriceVsQuote)
-          num = price.times(farm.tokenAmount).times(2)
-        }
-        if (farm.pid === 13) {
-          num = new BigNumber(2).times(farm.quoteTokenAmount)
-        }
-        if (farm.pid === 14) {
-          num = new BigNumber(2).times(farm.quoteTokenAmount)
-        }
-        if (farm.pid === 15) {
-          num = cakePrice.times(farm.tokenAmount).times(2)
-        }
-        if (farm.pid === 9) {
-          num = cakePrice.times(farm.tokenAmount).times(2)
-        }
-        if (farm.pid === 10) {
-          const price = cakePrice.times(farm.tokenPriceVsQuote)
-          num = price.times(farm.tokenAmount).times(2)
-        }
-        if (farm.pid === 11) {
-          const price = cakePrice.times(farm.tokenPriceVsQuote)
-          num = price.times(farm.tokenAmount).times(2)
-        }
-        if (farm.pid === 7) {
-          const price = cakePrice.times(farm.tokenPriceVsQuote)
-          num = price.times(farm.tokenAmount).times(2)
-        }
-        if (farm.pid === 2) {
-          const price = cakePrice.times(farm.tokenPriceVsQuote)
-          num = price.times(farm.tokenAmount).times(2)
-        }
-        if (farm.pid === 3) {
-          const price = cakePrice.times(farm.tokenPriceVsQuote)
-          num = price.times(farm.tokenAmount).times(2)
-        }
-        if (farm.pid === 4) {
-          num = new BigNumber(2).times(farm.quoteTokenAmount)
-        }
-        if (farm.pid === 5) {
-          const price = cakePrice.times(farm.tokenPriceVsQuote)
-          num = price.times(farm.tokenAmount).times(2)
-        }
-        if (farm.pid === 8) {
-          const price = cakePrice.times(farm.tokenPriceVsQuote)
-          num = price.times(farm.tokenAmount).times(2)
-        }
-        if (farm.pid === 18) {
-          const price = cakePrice.times(farm.tokenPriceVsQuote)
-          num = price.times(farm.tokenAmount).times(2)
-        }
-        if (farm.pid === 17) {
-          const price = cakePrice.times(farm.tokenPriceVsQuote)
-          num = price.times(farm.tokenAmount).times(2)
-        }
-        if (farm.pid === 16) {
-          const price = cakePrice.times(farm.tokenPriceVsQuote)
-          num = price.times(farm.tokenAmount).times(2)
-        }
-        if (farm.pid === 19) {
-          const price = cakePrice.times(farm.tokenPriceVsQuote)
-          num = price.times(farm.tokenAmount).times(2)
-        }
-        if (farm.pid === 21) {
-          const price = cakePrice.times(farm.tokenPriceVsQuote)
-          num = price.times(farm.tokenAmount).times(6800)
-        }
-        if (farm.pid === 20) {
-          num = cakePrice.times(farm.tokenAmount)
-        }
-        if (farm.pid === 23) {
-          const price = cakePrice.times(farm.tokenPriceVsQuote)
-          num = price.times(farm.tokenAmount).times(2)
-        }
-        if (farm.pid === 22) {
-          const price = cakePrice.times(farm.tokenPriceVsQuote)
-          num = price.times(farm.tokenAmount).times(2)
-        }
-        if (farm.pid === 24) {
-          const price = cakePrice.times(farm.tokenPriceVsQuote)
-          num = price.times(farm.tokenAmount).times(2)
-        }
-        if (farm.pid === 25) {
-          // awful temp fix for onemoon price
-          // .dividedBy(100000000).times(1.72)
-          const price = onemoonPrice.times(farm.tokenPriceVsQuote).div(1.7)
-          // console.log(price.toString(), farm.tokenAmount)
-          num = price.times(farm.tokenAmount).times(0.0000480241).div(2)
-        }
-        if (farm.pid === 26) {
-          const price = cakePrice.times(farm.tokenPriceVsQuote)
-          num = price.times(farm.tokenAmount).times(20000000000000000000000)
-        }
-        if (farm.pid === 27) {
-          const price = cakePrice.times(farm.tokenPriceVsQuote)
-          num = price.times(farm.tokenAmount).times(204000)
-        }
-        if (farm.pid === 28) {
-          num = new BigNumber(2.05).times(farm.tokenAmount)
-        }
-        if (farm.pid === 29) {
-          num = new BigNumber(1.7).times(farm.quoteTokenAmount)
-        }
-        if (farm.pid === 30) {
-          num = new BigNumber(2).times(farm.quoteTokenAmount)
-        }
-        if (farm.pid === 31) {
-          num = new BigNumber(2).times(farm.quoteTokenAmount)
-        }
-        if (farm.pid === 32) {
-          const price = cakePrice.times(farm.tokenPriceVsQuote)
-          num = price.times(farm.tokenAmount).times(200)
-        }
-        if (farm.pid === 33) {
-          const price = onePrice.times(farm.tokenPriceVsQuote).dividedBy(2)
-          num = price.times(farm.tokenAmount).times(1.1)
-        }
-        if (farm.pid === 34) {
-          const price = cakePrice.times(farm.tokenPriceVsQuote)
-          num = price.times(farm.tokenAmount).times(2)
-        }
-        if (farm.pid === 35) {
-          const price = cakePrice.times(farm.tokenPriceVsQuote)
-          num = price.times(farm.tokenAmount).times(3)
-        }
-        if (farm.pid === 36) {
-          const price = onePrice.times(farm.tokenPriceVsQuote)
-          num = price.times(farm.tokenAmount).times(1).dividedBy(2)
-        }
-        if (farm.pid === 37) {
-          const price = onePrice.times(farm.tokenPriceVsQuote)
-          num = price.times(farm.tokenAmount).times(3).dividedBy(200000)
-        }
-        if (farm.pid === 38) {
-          const price = onePrice.times(farm.tokenPriceVsQuote)
-          num = price.times(farm.tokenAmount).times(1).dividedBy(5)
-        }
-        // const totalLiquidity = new BigNumber(farm.lpTotalInQuoteToken).times(num)
-        const totalLiquidity = num
-        const apr = isActive ? getFarmApr(farm.poolWeight, cakePrice, totalLiquidity) : 0
-
-        return { ...farm, apr, liquidity: totalLiquidity }
+        return { ...farm, apr: cakeRewardsApr, lpRewardsApr, liquidity: totalLiquidity }
       })
 
       if (query) {
@@ -348,7 +201,7 @@ const Farms: React.FC = () => {
       }
       return farmsToDisplayWithAPR
     },
-    [cakePrice, prices, query, isActive, onemoonPrice, onePrice],
+    [cakePrice, query, isActive],
   )
 
   const handleChangeQuery = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -525,12 +378,12 @@ const Farms: React.FC = () => {
     setSortOption(option.value)
   }
 
-  let heading1 = 'Farms'
-  let heading2 = 'Stake Liquidity Pool (LP) Tokens to Earn hMOCHI + LP Rewards'
+  let heading1 = 'Vaults'
+  let heading2 = 'Auto-compound LP yields.'
   const heading3 = ''
   if (showSolo) {
-    heading1 = 'Solo Pools'
-    heading2 = 'Stake single assets to earn hMOCHI'
+    heading1 = 'LP Vault'
+    heading2 = 'Auto-compound LP yields.'
   }
 
   return (

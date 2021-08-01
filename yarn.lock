@@ -2021,10 +2021,10 @@
   resolved "https://registry.npmjs.org/@metamask/safe-event-emitter/-/safe-event-emitter-2.0.0.tgz"
   integrity sha512-/kSXhY692qiV1MXu6EeOZvg5nECLclxNXcKCxJ3cXQgYuRymRHpdx/t7JXfsK+JLjwA1e1c1/SBrlQYpusC29Q==
 
-"@mochiswap/huikit@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@mochiswap/huikit/-/huikit-0.0.3.tgz#689db8b4df63967a4bc874dfd82b1ae390cd57c2"
-  integrity sha512-0eSqUL3cqV7PDLmVS2GDGjzqjxY92lpfzY/Gf5d5y94hrktWYWIOc6pvTeUDe3gW7NKNiMY8iBqrMt+6fDc1PQ==
+"@mochiswap/huikit@^0.1.3":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@mochiswap/huikit/-/huikit-0.1.3.tgz#faaa8e9c120660e1ef465baec74bbbea996ca438"
+  integrity sha512-g1hrh0AG4jotQnqUHb7wmUATN2vJLIn/s9Scd7ggFsz6bLgflyZDQvwmIxjrINQxHmxRiM48PgBqiUx1HZw6AA==
   dependencies:
     "@popperjs/core" "^2.9.2"
     "@types/lodash" "^4.14.168"
