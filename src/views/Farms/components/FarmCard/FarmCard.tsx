@@ -17,6 +17,12 @@ export interface FarmWithStakedValue extends Farm {
   apr?: number
   liquidity?: BigNumber
 }
+// latest pancake
+// export interface FarmWithStakedValue extends Farm {
+//   apr?: number
+//   lpRewardsApr?: number
+//   liquidity?: BigNumber
+// }
 
 const AccentGradient = keyframes`  
   0% {

@@ -127,33 +127,33 @@ const tokens = {
     decimals: 9,
     projectLink: 'https://onemoon.mochiswap.io/',
   },
-  math: {
-    symbol: 'MATH',
-    address: {
-      56: '0xf218184af829cf2b0019f8e6f0b2423498a36983',
-      97: '',
-    },
-    decimals: 18,
-    projectLink: 'https://mathwallet.org/',
-  },
-  kun: {
-    symbol: 'KUN',
-    address: {
-      56: '0x1A2fb0Af670D0234c2857FaD35b789F8Cb725584',
-      97: '',
-    },
-    decimals: 18,
-    projectLink: 'https://chemix.io/home',
-  },
-  qsd: {
-    symbol: 'QSD',
-    address: {
-      56: '0x07AaA29E63FFEB2EBf59B33eE61437E1a91A3bb2',
-      97: '',
-    },
-    decimals: 18,
-    projectLink: 'https://chemix.io/home',
-  },
+  // math: {
+  //   symbol: 'MATH',
+  //   address: {
+  //     56: '0xf218184af829cf2b0019f8e6f0b2423498a36983',
+  //     97: '',
+  //   },
+  //   decimals: 18,
+  //   projectLink: 'https://mathwallet.org/',
+  // },
+  // kun: {
+  //   symbol: 'KUN',
+  //   address: {
+  //     56: '0x1A2fb0Af670D0234c2857FaD35b789F8Cb725584',
+  //     97: '',
+  //   },
+  //   decimals: 18,
+  //   projectLink: 'https://chemix.io/home',
+  // },
+  // qsd: {
+  //   symbol: 'QSD',
+  //   address: {
+  //     56: '0x07AaA29E63FFEB2EBf59B33eE61437E1a91A3bb2',
+  //     97: '',
+  //   },
+  //   decimals: 18,
+  //   projectLink: 'https://chemix.io/home',
+  // },
 }
 
 export default tokens

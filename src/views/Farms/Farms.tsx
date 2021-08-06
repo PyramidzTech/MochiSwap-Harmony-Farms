@@ -179,6 +179,34 @@ const Farms: React.FC = () => {
     (farm) => farm.userData && new BigNumber(farm.userData.stakedBalance).isGreaterThan(0),
   )
 
+  // const mainNetChainId = 1666600000
+  // const farmsList = useCallback(
+  //   (farmsToDisplay: Farm[]): FarmWithStakedValue[] => {
+  //     let farmsToDisplayWithAPR: FarmWithStakedValue[] = farmsToDisplay.map((farm) => {
+  //       debugger;
+  //       // if (!farm.lpTotalInQuoteToken || !farm.quoteToken.busdPrice) {
+  //       if (!farm.lpTotalInQuoteToken) { //  || !prices
+  //         return farm
+  //       }
+  //       const totalLiquidity = new BigNumber(1); // new BigNumber(farm.lpTotalInQuoteToken).times(farm.quoteToken.busdPrice)
+  //       const { cakeRewardsApr, lpRewardsApr } = { cakeRewardsApr: 0, lpRewardsApr: 0 } // sActive // lpRewardsApr
+  //         // ? getFarmApr(new BigNumber(farm.poolWeight), cakePrice, totalLiquidity) // , farm.lpAddresses[mainNetChainId]
+  //         // : { cakeRewardsApr: 0, lpRewardsApr: 0 }
+
+  //       return { ...farm, apr: cakeRewardsApr, lpRewardsApr, liquidity: totalLiquidity }
+  //     })
+
+  //     if (query) {
+  //       const lowercaseQuery = latinise(query.toLowerCase())
+  //       farmsToDisplayWithAPR = farmsToDisplayWithAPR.filter((farm: FarmWithStakedValue) => {
+  //         return latinise(farm.lpSymbol.toLowerCase()).includes(lowercaseQuery)
+  //       })
+  //     }
+  //     return farmsToDisplayWithAPR
+  //   },
+  //   [query], // cakePrice, query, isActive
+  // )
+
   const farmsList = useCallback(
     (farmsToDisplay: Farm[]): FarmWithStakedValue[] => {
       let farmsToDisplayWithAPR: FarmWithStakedValue[] = farmsToDisplay.map((farm) => {
@@ -360,6 +388,7 @@ const Farms: React.FC = () => {
   const [numberOfFarmsVisible, setNumberOfFarmsVisible] = useState(NUMBER_OF_FARMS_VISIBLE)
   const [observerIsSet, setObserverIsSet] = useState(false)
 
+  
   const farmsStakedMemoized = useMemo(() => {
     let farmsStaked = []
 
