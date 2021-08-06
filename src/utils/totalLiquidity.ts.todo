@@ -1,0 +1,15 @@
+// export const getUSDPrice = (
+//   poolWeight: BigNumber,
+//   cakePriceUsd: BigNumber,
+//   poolLiquidityUsd: BigNumber,
+//   farmAddress: string,
+// ): { cakeRewardsApr: number; lpRewardsApr: number } => {
+//   const yearlyCakeRewardAllocation = CAKE_PER_YEAR.times(poolWeight)
+//   const cakeRewardsApr = yearlyCakeRewardAllocation.times(cakePriceUsd).div(poolLiquidityUsd).times(100)
+//   let cakeRewardsAprAsNumber = null
+//   if (!cakeRewardsApr.isNaN() && cakeRewardsApr.isFinite()) {
+//     cakeRewardsAprAsNumber = cakeRewardsApr.toNumber()
+//   }
+//   const lpRewardsApr = 0; // lpAprs[farmAddress?.toLocaleLowerCase()] ?? 0
+//   return { cakeRewardsApr: cakeRewardsAprAsNumber, lpRewardsApr }
+// }
