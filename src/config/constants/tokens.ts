@@ -127,15 +127,14 @@ const tokens = {
     decimals: 9,
     projectLink: 'https://onemoon.mochiswap.io/',
   },
-  // math: {
-  //   symbol: 'MATH',
-  //   address: {
-  //     56: '0xf218184af829cf2b0019f8e6f0b2423498a36983',
-  //     97: '',
-  //   },
-  //   decimals: 18,
-  //   projectLink: 'https://mathwallet.org/',
-  // },
+  xya: {
+    symbol: 'XYA',
+    address: {
+      1666600000: '0xf218184af829cf2b0019f8e6f0b2423498a36983',
+    },
+    decimals: 18,
+    projectLink: 'https://mochiswap.io/',
+  },
   // kun: {
   //   symbol: 'KUN',
   //   address: {
