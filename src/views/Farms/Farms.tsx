@@ -361,6 +361,10 @@ const Farms: React.FC = () => {
           const price = onePrice.times(farm.tokenPriceVsQuote)
           num = price.times(farm.tokenAmount).times(1).dividedBy(5)
         }
+        if (farm.pid === 39) {
+          const price = onePrice.times(farm.tokenPriceVsQuote)
+          num = price.times(farm.tokenAmount).times(2)
+        }
         // const totalLiquidity = new BigNumber(farm.lpTotalInQuoteToken).times(num)
         const totalLiquidity = num
         const apr = isActive ? getFarmApr(farm.poolWeight, cakePrice, totalLiquidity) : 0

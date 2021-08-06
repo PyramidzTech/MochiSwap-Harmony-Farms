@@ -14,12 +14,6 @@
     "generate:config": "ts-node --compiler-options '{\"module\":\"commonjs\"}' scripts/generateConfig",
     "deploy": "yarn build && aws s3 sync build/ s3://harmony.mochiswap.io --profile=hashparty && aws cloudfront create-invalidation --distribution-id E1WHDNTNR99KRK --paths '/*' --profile=hashparty"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn format:check",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -35,7 +29,7 @@
   "dependencies": {
     "@binance-chain/bsc-connector": "^1.0.0",
     "@ethersproject/abi": "^5.0.7",
-    "@mochiswap/huikit": "^0.2.0",
+    "@mochiswap/huikit": "^0.2.",
     "@reduxjs/toolkit": "^1.5.0",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",
