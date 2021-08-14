@@ -18,8 +18,9 @@ import history from './routerHistory'
 // Only pool is included in the main bundle because of it's the most visited page
 const Home = lazy(() => import('./views/Home'))
 const Farms = lazy(() => import('./views/Farms'))
-const Vaults = lazy(() => import('./views/Vaults'))
-const Lottery = lazy(() => import('./views/Lottery'))
+// const Vaults = lazy(() => import('./views/Vaults'))
+const BurnPools = lazy(() => import('./views/BurnPools'))
+// const Lottery = lazy(() => import('./views/Lottery'))
 // const Ifos = lazy(() => import('./views/Ifos'))
 const NotFound = lazy(() => import('./views/NotFound'))
 // const Collectibles = lazy(() => import('./views/Collectibles'))
@@ -60,12 +61,15 @@ const App: React.FC = () => {
             <Route path="/xmochi">
               <Bars />
             </Route>
-            <Route path="/lottery">
+            {/* <Route path="/lottery">
               <Lottery />
+            </Route> */}
+            <Route path="/kinako">
+              <BurnPools />
             </Route>
-            <Route path="/vaults">
+            {/* <Route path="/vaults">
               <Vaults />
-            </Route>
+            </Route> */}
             {/* <Route path="/collectibles">
               <Collectibles />
             </Route> */}
@@ -82,12 +86,12 @@ const App: React.FC = () => {
               <Predictions />
             </Route> */}
             {/* Redirect */}
-            <Route path="/staking">
+            {/* <Route path="/staking">
               <Redirect to="/pools" />
-            </Route>
-            <Route path="/syrup">
+            </Route> */}
+            {/* <Route path="/syrup">
               <Redirect to="/pools" />
-            </Route>
+            </Route> */}
             {/* <Route path="/nft">
               <Redirect to="/collectibles" />
             </Route> */}

@@ -379,8 +379,8 @@ const farms: FarmConfig[] = [
     lpAddresses: {
       1666600000: '0x603Fe676AD4C279c04511C98FBef103f582c0883',
     },
-    token: tokens.cake,
-    quoteToken: tokens.xya,
+    token: tokens.freyala,
+    quoteToken: tokens.cake,
   },
 ]
 

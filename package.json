@@ -29,7 +29,8 @@
   "dependencies": {
     "@binance-chain/bsc-connector": "^1.0.0",
     "@ethersproject/abi": "^5.0.7",
-    "@mochiswap/huikit": "^0.2.",
+    "@mochiswap/hsdk": "^3.1.7",
+    "@mochiswap/huikit": "^0.2",
     "@reduxjs/toolkit": "^1.5.0",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",

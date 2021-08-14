@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 // import { Spinner } from '@mochiswap/huikit'
 import { Flex, Box, Image } from '@mochiswap/huikit'
-import Page from './layout/Page'
+import Page from './Layout/Page'
 
 const Wrapper = styled(Page)`
   display: flex;

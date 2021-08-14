@@ -6,8 +6,8 @@ import BigNumber from 'bignumber.js'
 import { useWeb3React } from '@web3-react/core'
 import { Image, Heading, RowType, Toggle, Text } from '@mochiswap/huikit'
 import styled from 'styled-components'
-import FlexLayout from 'components/layout/Flex'
-import Page from 'components/layout/Page'
+import FlexLayout from 'components/Layout/Flex'
+import Page from 'components/Layout/Page'
 import useRefresh from 'hooks/useRefresh'
 import { useFarms, usePriceCakeBusd, usePriceBnbBusd, useGetApiPrices, usePriceOneMoonUSDC } from 'state/hooks'
 import { fetchFarmUserDataAsync } from 'state/actions'
@@ -362,7 +362,8 @@ const Farms: React.FC = () => {
           num = price.times(farm.tokenAmount).times(1).dividedBy(5)
         }
         if (farm.pid === 39) {
-          const price = onePrice.times(farm.tokenPriceVsQuote)
+          const price = cakePrice.times(farm.tokenPriceVsQuote)
+          debugger
           num = price.times(farm.tokenAmount).times(2)
         }
         // const totalLiquidity = new BigNumber(farm.lpTotalInQuoteToken).times(num)

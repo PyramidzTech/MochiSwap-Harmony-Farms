@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import ApyButton from 'views/Farms/components/FarmCard/ApyButton'
+// import ApyButton from 'views/Farms/components/FarmCard/ApyButton'
 import { Address } from 'config/constants/types'
 import BigNumber from 'bignumber.js'
 import { BASE_ADD_LIQUIDITY_URL } from 'config'

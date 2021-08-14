@@ -10,6 +10,9 @@ export type TranslatableText =
       }
     }
 
+export type SerializedBigNumber = string
+
+
 export interface Farm extends FarmConfig {
   tokenAmount?: BigNumber
   quoteTokenAmount?: BigNumber

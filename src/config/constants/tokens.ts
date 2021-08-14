@@ -127,32 +127,14 @@ const tokens = {
     decimals: 9,
     projectLink: 'https://onemoon.mochiswap.io/',
   },
-  xya: {
+  freyala: {
     symbol: 'XYA',
     address: {
-      1666600000: '0xf218184af829cf2b0019f8e6f0b2423498a36983',
+      1666600000: '0x9b68bf4bf89c115c721105eaf6bd5164afcc51e4',
     },
     decimals: 18,
-    projectLink: 'https://mochiswap.io/',
+    projectLink: 'https://onemoon.mochiswap.io/',
   },
-  // kun: {
-  //   symbol: 'KUN',
-  //   address: {
-  //     56: '0x1A2fb0Af670D0234c2857FaD35b789F8Cb725584',
-  //     97: '',
-  //   },
-  //   decimals: 18,
-  //   projectLink: 'https://chemix.io/home',
-  // },
-  // qsd: {
-  //   symbol: 'QSD',
-  //   address: {
-  //     56: '0x07AaA29E63FFEB2EBf59B33eE61437E1a91A3bb2',
-  //     97: '',
-  //   },
-  //   decimals: 18,
-  //   projectLink: 'https://chemix.io/home',
-  // },
 }
 
 export default tokens
