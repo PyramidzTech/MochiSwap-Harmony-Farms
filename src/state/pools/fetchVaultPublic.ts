@@ -1,5 +1,5 @@
 import BigNumber from 'bignumber.js'
-import { convertSharesToCake } from 'views/Pools/helpers'
+import { convertSharesToCake } from 'views/BurnPools/helpers'
 import multicall from 'utils/multicall'
 import cakeVaultAbi from 'config/abi/cakeVault.json'
 import { getCakeVaultAddress } from 'utils/addressHelpers'

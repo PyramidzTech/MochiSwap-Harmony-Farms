@@ -1,4 +1,6 @@
-import { TranslatableText } from 'state/types'
+import BigNumber from 'bignumber.js'
+
+import { SerializedBigNumber, TranslatableText } from 'state/types'
 
 export interface Address {
   1666600000: string
@@ -9,6 +11,7 @@ export interface Token {
   address?: Address
   decimals?: number
   projectLink?: string
+  busdPrice?: string
 }
 
 export enum PoolIds {
@@ -36,7 +39,7 @@ export interface Ifo {
   articleUrl: string
   campaignId: string
   tokenOfferingPrice: number
-  isV1: boolean
+  version: number
   [PoolIds.poolBasic]?: IfoPoolInfo
   [PoolIds.poolUnlimited]: IfoPoolInfo
 }
@@ -67,7 +70,6 @@ export interface PoolConfig {
   sousId: number
   earningToken: Token
   stakingToken: Token
-  stakingLimit?: number
   contractAddress: Address
   poolCategory: PoolCategory
   tokenPerBlock: string
@@ -137,7 +139,7 @@ export type Team = {
   textColor: string
 }
 
-export type CampaignType = 'ifo' | 'teambattle'
+export type CampaignType = 'ifo' | 'teambattle' | 'participation'
 
 export type Campaign = {
   id: string
@@ -151,4 +153,84 @@ export type PageMeta = {
   title: string
   description?: string
   image?: string
+}
+
+export enum LotteryStatus {
+  PENDING = 'pending',
+  OPEN = 'open',
+  CLOSE = 'close',
+  CLAIMABLE = 'claimable',
+}
+
+export interface LotteryTicket {
+  id: string
+  number: string
+  status: boolean
+  rewardBracket?: number
+  roundId?: string
+  cakeReward?: SerializedBigNumber
+}
+
+export interface LotteryTicketClaimData {
+  ticketsWithUnclaimedRewards: LotteryTicket[]
+  allWinningTickets: LotteryTicket[]
+  cakeTotal: BigNumber
+  roundId: string
+}
+
+// Farm Auction
+export interface FarmAuctionBidderConfig {
+  account: string
+  farmName: string
+  tokenAddress: string
+  quoteToken: Token
+  tokenName: string
+  projectSite?: string
+  lpAddress?: string
+}
+
+// Note: this status is slightly different compared to 'status' comfing
+// from Farm Auction smart contract
+export enum AuctionStatus {
+  ToBeAnnounced, // No specific dates/blocks to display
+  Pending, // Auction is scheduled but not live yet (i.e. waiting for startBlock)
+  Open, // Auction is open for bids
+  Finished, // Auction end block is reached, bidding is not possible
+  Closed, // Auction was closed in smart contract
+}
+
+export interface Auction {
+  id: number
+  status: AuctionStatus
+  startBlock: number
+  startDate: Date
+  endBlock: number
+  endDate: Date
+  auctionDuration: number
+  farmStartBlock: number
+  farmStartDate: Date
+  farmEndBlock: number
+  farmEndDate: Date
+  initialBidAmount: number
+  topLeaderboard: number
+  leaderboardThreshold: BigNumber
+}
+
+export interface BidderAuction {
+  id: number
+  amount: BigNumber
+  claimed: boolean
+}
+
+export interface Bidder extends FarmAuctionBidderConfig {
+  position?: number
+  isTopPosition: boolean
+  samePositionAsAbove: boolean
+  amount: BigNumber
+}
+
+export interface ConnectedBidder {
+  account: string
+  isWhitelisted: boolean
+  bidderData?: Bidder
 }

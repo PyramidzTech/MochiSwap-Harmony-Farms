@@ -2034,10 +2034,10 @@
     tiny-warning "^1.0.3"
     toformat "^2.0.0"
 
-"@mochiswap/huikit@^0.2":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@mochiswap/huikit/-/huikit-0.2.0.tgz#f5bad8d7c7732a3f7072a1545d0cdf59583e5e99"
-  integrity sha512-hIp3R3inscPpuZ7f/MB4tCNwXopn5vcazRPv+rp5HZI7dynZd5gQbW4JNIRu5BTL+ZrX93DzQeRSMHmxGlv5Vw==
+"@mochiswap/huikit@^0.2.1":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@mochiswap/huikit/-/huikit-0.2.2.tgz#ed4c172a0e07048a298641a0fc701abec31ef6f7"
+  integrity sha512-dlxeDhDpZktgn+I/C8aKZwpaqtT61MWcHQM9NHOOAcJRDdJriVmp9c/64Zf5ewlaWy5eA3wZ7JVSDLpY4pMEig==
   dependencies:
     "@popperjs/core" "^2.9.2"
     "@types/lodash" "^4.14.168"

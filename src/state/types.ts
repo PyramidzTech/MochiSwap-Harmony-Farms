@@ -1,5 +1,15 @@
+import { ThunkAction } from 'redux-thunk'
+import { AnyAction } from '@reduxjs/toolkit'
 import BigNumber from 'bignumber.js'
-import { CampaignType, FarmConfig, Nft, PoolConfig, Team } from 'config/constants/types'
+import { ethers } from 'ethers'
+import { CampaignType, FarmConfig, LotteryStatus, LotteryTicket, Nft, PoolConfig, Team } from 'config/constants/types'
+
+export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, State, unknown, AnyAction>
+
+export interface BigNumberToJson {
+  type: 'BigNumber'
+  hex: string
+}
 
 export type TranslatableText =
   | string
@@ -12,14 +22,15 @@ export type TranslatableText =
 
 export type SerializedBigNumber = string
 
-
 export interface Farm extends FarmConfig {
-  tokenAmount?: BigNumber
-  quoteTokenAmount?: BigNumber
-  lpTotalInQuoteToken?: BigNumber
-  lpTotalSupply?: BigNumber
-  tokenPriceVsQuote?: BigNumber
-  poolWeight?: BigNumber
+  tokenAmountMc?: SerializedBigNumber
+  quoteTokenAmountMc?: SerializedBigNumber
+  tokenAmountTotal?: SerializedBigNumber
+  quoteTokenAmountTotal?: SerializedBigNumber
+  lpTotalInQuoteToken?: SerializedBigNumber
+  lpTotalSupply?: SerializedBigNumber
+  tokenPriceVsQuote?: SerializedBigNumber
+  poolWeight?: SerializedBigNumber
   userData?: {
     allowance: string
     tokenBalance: string
@@ -30,8 +41,13 @@ export interface Farm extends FarmConfig {
 
 export interface Pool extends PoolConfig {
   totalStaked?: BigNumber
+  stakingLimit?: BigNumber
   startBlock?: number
   endBlock?: number
+  apr?: number
+  stakingTokenPrice?: number
+  earningTokenPrice?: number
+  isAutoVault?: boolean
   userData?: {
     allowance: BigNumber
     stakingTokenBalance: BigNumber
@@ -61,8 +77,34 @@ export interface FarmsState {
   userDataLoaded: boolean
 }
 
+export interface VaultFees {
+  performanceFee: number
+  callFee: number
+  withdrawalFee: number
+  withdrawalFeePeriod: number
+}
+
+export interface VaultUser {
+  isLoading: boolean
+  userShares: string
+  cakeAtLastUserAction: string
+  lastDepositedTime: string
+  lastUserActionTime: string
+}
+export interface CakeVault {
+  totalShares?: string
+  pricePerFullShare?: string
+  totalCakeInVault?: string
+  estimatedCakeBountyReward?: string
+  totalPendingCakeHarvest?: string
+  fees?: VaultFees
+  userData?: VaultUser
+}
+
 export interface PoolsState {
   data: Pool[]
+  cakeVault: CakeVault
+  userDataLoaded: boolean
 }
 
 export interface ProfileState {
@@ -102,40 +144,6 @@ export interface Achievement {
 
 export interface AchievementState {
   data: Achievement[]
-}
-
-// API Price State
-export interface PriceApiList {
-  /* eslint-disable camelcase */
-  [key: string]: {
-    name: string
-    symbol: string
-    price: string
-    price_BNB: string
-  }
-}
-
-export interface PriceApiListThunk {
-  /* eslint-disable camelcase */
-  [key: string]: number
-}
-
-export interface PriceApiResponse {
-  /* eslint-disable camelcase */
-  updated_at: string
-  data: PriceApiList
-}
-
-export interface PriceApiThunk {
-  /* eslint-disable camelcase */
-  updated_at: string
-  data: PriceApiListThunk
-}
-
-export interface PriceState {
-  isLoading: boolean
-  lastUpdated: string
-  data: PriceApiListThunk
 }
 
 // Block
@@ -192,7 +200,6 @@ export interface Round {
 }
 
 export interface Market {
-  id: string
   paused: boolean
   epoch: number
 }
@@ -203,6 +210,7 @@ export interface Bet {
   amount: number
   position: BetPosition
   claimed: boolean
+  claimedHash: string
   user?: PredictionUser
   round: Round
 }
@@ -215,24 +223,66 @@ export interface PredictionUser {
   totalBNB: number
 }
 
-export interface RoundData {
-  [key: string]: Round
-}
-
 export interface HistoryData {
   [key: string]: Bet[]
-}
-
-export interface BetData {
-  [key: string]: {
-    [key: string]: Bet
-  }
 }
 
 export enum HistoryFilter {
   ALL = 'all',
   COLLECTED = 'collected',
   UNCOLLECTED = 'uncollected',
+}
+
+export interface LedgerData {
+  [key: string]: {
+    [key: string]: ReduxNodeLedger
+  }
+}
+
+export interface RoundData {
+  [key: string]: ReduxNodeRound
+}
+
+export interface ReduxNodeLedger {
+  position: BetPosition
+  amount: BigNumberToJson
+  claimed: boolean
+}
+
+export interface NodeLedger {
+  position: BetPosition
+  amount: ethers.BigNumber
+  claimed: boolean
+}
+
+export interface ReduxNodeRound {
+  epoch: number
+  startBlock: number
+  lockBlock: number | null
+  endBlock: number | null
+  lockPrice: BigNumberToJson | null
+  closePrice: BigNumberToJson | null
+  totalAmount: BigNumberToJson
+  bullAmount: BigNumberToJson
+  bearAmount: BigNumberToJson
+  rewardBaseCalAmount: BigNumberToJson
+  rewardAmount: BigNumberToJson
+  oracleCalled: boolean
+}
+
+export interface NodeRound {
+  epoch: number
+  startBlock: number
+  lockBlock: number
+  endBlock: number
+  lockPrice: ethers.BigNumber
+  closePrice: ethers.BigNumber
+  totalAmount: ethers.BigNumber
+  bullAmount: ethers.BigNumber
+  bearAmount: ethers.BigNumber
+  rewardBaseCalAmount: ethers.BigNumber
+  rewardAmount: ethers.BigNumber
+  oracleCalled: boolean
 }
 
 export interface PredictionsState {
@@ -247,11 +297,174 @@ export interface PredictionsState {
   intervalBlocks: number
   bufferBlocks: number
   minBetAmount: string
+  rewardRate: number
   lastOraclePrice: string
-  rounds: RoundData
   history: HistoryData
-  bets: BetData
+  rounds?: RoundData
+  ledgers?: LedgerData
+  claimableStatuses: {
+    [key: string]: boolean
+  }
 }
+
+// Voting
+
+/* eslint-disable camelcase */
+/**
+ * @see https://hub.snapshot.page/graphql
+ */
+export interface VoteWhere {
+  id?: string
+  id_in?: string[]
+  voter?: string
+  voter_in?: string[]
+  proposal?: string
+  proposal_in?: string[]
+}
+
+export enum SnapshotCommand {
+  PROPOSAL = 'proposal',
+  VOTE = 'vote',
+}
+
+export enum ProposalType {
+  ALL = 'all',
+  CORE = 'core',
+  COMMUNITY = 'community',
+}
+
+export enum ProposalState {
+  ACTIVE = 'active',
+  PENDING = 'pending',
+  CLOSED = 'closed',
+}
+
+export interface Space {
+  id: string
+  name: string
+}
+
+export interface Proposal {
+  author: string
+  body: string
+  choices: string[]
+  end: number
+  id: string
+  snapshot: string
+  space: Space
+  start: number
+  state: ProposalState
+  title: string
+}
+
+export interface Vote {
+  id: string
+  voter: string
+  created: number
+  space: Space
+  proposal: {
+    choices: Proposal['choices']
+  }
+  choice: number
+  metadata?: {
+    votingPower: string
+    verificationHash: string
+  }
+  _inValid?: boolean
+}
+
+export enum VotingStateLoadingStatus {
+  INITIAL = 'initial',
+  IDLE = 'idle',
+  LOADING = 'loading',
+  ERROR = 'error',
+}
+
+export interface VotingState {
+  proposalLoadingStatus: VotingStateLoadingStatus
+  proposals: {
+    [key: string]: Proposal
+  }
+  voteLoadingStatus: VotingStateLoadingStatus
+  votes: {
+    [key: string]: Vote[]
+  }
+}
+
+export interface LotteryRoundUserTickets {
+  isLoading?: boolean
+  tickets?: LotteryTicket[]
+}
+
+interface LotteryRoundGenerics {
+  isLoading?: boolean
+  lotteryId: string
+  status: LotteryStatus
+  startTime: string
+  endTime: string
+  treasuryFee: string
+  firstTicketId: string
+  lastTicketId: string
+  finalNumber: number
+}
+
+export interface LotteryRound extends LotteryRoundGenerics {
+  userTickets?: LotteryRoundUserTickets
+  priceTicketInCake: BigNumber
+  discountDivisor: BigNumber
+  amountCollectedInCake: BigNumber
+  cakePerBracket: string[]
+  countWinnersPerBracket: string[]
+  rewardsBreakdown: string[]
+}
+
+export interface LotteryResponse extends LotteryRoundGenerics {
+  priceTicketInCake: SerializedBigNumber
+  discountDivisor: SerializedBigNumber
+  amountCollectedInCake: SerializedBigNumber
+  cakePerBracket: SerializedBigNumber[]
+  countWinnersPerBracket: SerializedBigNumber[]
+  rewardsBreakdown: SerializedBigNumber[]
+}
+
+export interface LotteryState {
+  currentLotteryId: string
+  maxNumberTicketsPerBuyOrClaim: string
+  isTransitioning: boolean
+  currentRound: LotteryResponse & { userTickets?: LotteryRoundUserTickets }
+  lotteriesData?: LotteryRoundGraphEntity[]
+  userLotteryData?: LotteryUserGraphEntity
+}
+
+export interface LotteryRoundGraphEntity {
+  id: string
+  totalUsers: string
+  totalTickets: string
+  winningTickets: string
+  status: LotteryStatus
+  finalNumber: string
+  startTime: string
+  endTime: string
+  ticketPrice: SerializedBigNumber
+}
+
+export interface LotteryUserGraphEntity {
+  account: string
+  totalCake: string
+  totalTickets: string
+  rounds: UserRound[]
+}
+
+export interface UserRound {
+  claimed: boolean
+  lotteryId: string
+  status: LotteryStatus
+  endTime: string
+  totalTickets: string
+  tickets?: LotteryTicket[]
+}
+
+export type UserTicketsResponse = [ethers.BigNumber[], number[], boolean[]]
 
 // Global state
 
@@ -259,10 +472,11 @@ export interface State {
   achievements: AchievementState
   block: BlockState
   farms: FarmsState
-  prices: PriceState
   pools: PoolsState
   predictions: PredictionsState
   profile: ProfileState
   teams: TeamsState
   collectibles: CollectiblesState
+  voting: VotingState
+  lottery: LotteryState
 }

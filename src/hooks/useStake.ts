@@ -13,7 +13,7 @@ const useStake = (pid: number) => {
   const handleStake = useCallback(
     async (amount: string) => {
       const txHash = await stake(masterChefContract, pid, amount, account)
-      dispatch(fetchFarmUserDataAsync(account))
+      dispatch(fetchFarmUserDataAsync({account, pids: [pid]}))
       console.info(txHash)
     },
     [account, dispatch, masterChefContract, pid],
@@ -22,28 +22,28 @@ const useStake = (pid: number) => {
   return { onStake: handleStake }
 }
 
-export const useSousStake = (sousId, isUsingBnb = false) => {
-  const dispatch = useAppDispatch()
-  const { account } = useWeb3React()
-  const masterChefContract = useMasterchef()
-  const sousChefContract = useSousChef(sousId)
+// export const useSousStake = (sousId, isUsingBnb = false) => {
+//   const dispatch = useAppDispatch()
+//   const { account } = useWeb3React()
+//   const masterChefContract = useMasterchef()
+//   const sousChefContract = useSousChef(sousId)
 
-  const handleStake = useCallback(
-    async (amount: string, decimals: number) => {
-      if (sousId === 0) {
-        await stake(masterChefContract, 0, amount, account)
-      } else if (isUsingBnb) {
-        await sousStakeBnb(sousChefContract, amount, account)
-      } else {
-        await sousStake(sousChefContract, amount, decimals, account)
-      }
-      dispatch(updateUserStakedBalance(sousId, account))
-      dispatch(updateUserBalance(sousId, account))
-    },
-    [account, dispatch, isUsingBnb, masterChefContract, sousChefContract, sousId],
-  )
+//   const handleStake = useCallback(
+//     async (amount: string, decimals: number) => {
+//       if (sousId === 0) {
+//         await stake(masterChefContract, 0, amount, account)
+//       } else if (isUsingBnb) {
+//         await sousStakeBnb(sousChefContract, amount, account)
+//       } else {
+//         await sousStake(sousChefContract, amount, decimals, account)
+//       }
+//       dispatch(updateUserStakedBalance(sousId, account))
+//       dispatch(updateUserBalance(sousId, account))
+//     },
+//     [account, dispatch, isUsingBnb, masterChefContract, sousChefContract, sousId],
+//   )
 
-  return { onStake: handleStake }
-}
+//   return { onStake: handleStake }
+// }
 
 export default useStake

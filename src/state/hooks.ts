@@ -12,13 +12,23 @@ import { getBalanceNumber } from 'utils/formatBalance'
 import { BIG_ZERO } from 'utils/bigNumber'
 import useRefresh from 'hooks/useRefresh'
 import { fetchFarmsPublicDataAsync, fetchPoolsPublicDataAsync, fetchPoolsUserDataAsync, setBlock } from './actions'
-import { State, Farm, Pool, ProfileState, TeamsState, AchievementState, PriceState, FarmsState } from './types'
+import { State, Farm, Pool, ProfileState, TeamsState, AchievementState, FarmsState } from './types'
 import { fetchProfile } from './profile'
 import { fetchTeam, fetchTeams } from './teams'
 import { fetchAchievements } from './achievements'
 import { fetchPrices } from './prices'
 import { fetchWalletNfts } from './collectibles'
 import { getCanClaim } from './predictions/helpers'
+
+// Prices
+export const useFetchPriceList = () => {
+  const { slowRefresh } = useRefresh()
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(fetchPrices())
+  }, [dispatch, slowRefresh])
+}
 
 export const useFetchPublicData = () => {
   const dispatch = useAppDispatch()
@@ -152,16 +162,6 @@ export const useFetchAchievements = () => {
 export const useAchievements = () => {
   const achievements: AchievementState['data'] = useSelector((state: State) => state.achievements.data)
   return achievements
-}
-
-// Prices
-export const useFetchPriceList = () => {
-  const { slowRefresh } = useRefresh()
-  const dispatch = useAppDispatch()
-
-  useEffect(() => {
-    dispatch(fetchPrices())
-  }, [dispatch, slowRefresh])
 }
 
 export const useGetApiPrices = () => {

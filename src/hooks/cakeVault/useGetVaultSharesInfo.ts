@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import BigNumber from 'bignumber.js'
-import { convertSharesToCake } from 'views/Pools/helpers'
+import { convertSharesToCake } from 'views/BurnPools/helpers'
 import { useCakeVaultContract } from 'hooks/useContract'
 import makeBatchRequest from 'utils/makeBatchRequest'
 

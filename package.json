@@ -12,7 +12,7 @@
     "format:check": "prettier --check --loglevel error 'src/**/*.{js,jsx,ts,tsx}'",
     "format:write": "prettier --write 'src/**/*.{js,jsx,ts,tsx}'",
     "generate:config": "ts-node --compiler-options '{\"module\":\"commonjs\"}' scripts/generateConfig",
-    "deploy": "yarn build && aws s3 sync build/ s3://harmony.mochiswap.io --profile=hashparty && aws cloudfront create-invalidation --distribution-id E1WHDNTNR99KRK --paths '/*' --profile=hashparty"
+    "deploy": "yarn build && aws s3 sync build/ s3://harmony-legacy.mochiswap.io --profile=hashparty && aws cloudfront create-invalidation --distribution-id E32XHVELK13SU --paths '/*' --profile=hashparty"
   },
   "browserslist": {
     "production": [
@@ -30,7 +30,7 @@
     "@binance-chain/bsc-connector": "^1.0.0",
     "@ethersproject/abi": "^5.0.7",
     "@mochiswap/hsdk": "^3.1.7",
-    "@mochiswap/huikit": "^0.2",
+    "@mochiswap/huikit": "^0.2.1",
     "@reduxjs/toolkit": "^1.5.0",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",

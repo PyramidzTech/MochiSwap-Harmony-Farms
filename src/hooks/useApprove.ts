@@ -16,7 +16,7 @@ export const useApprove = (lpContract: Contract) => {
   const handleApprove = useCallback(async () => {
     try {
       const tx = await approve(lpContract, masterChefContract, account)
-      dispatch(fetchFarmUserDataAsync(account))
+      dispatch(fetchFarmUserDataAsync({account, pids: []}))
       return tx
     } catch (e) {
       return false
@@ -27,23 +27,23 @@ export const useApprove = (lpContract: Contract) => {
 }
 
 // Approve a Pool
-export const useSousApprove = (lpContract: Contract, sousId) => {
-  const dispatch = useAppDispatch()
-  const { account } = useWeb3React()
-  const sousChefContract = useSousChef(sousId)
+// export const useSousApprove = (lpContract: Contract, sousId) => {
+//   const dispatch = useAppDispatch()
+//   const { account } = useWeb3React()
+//   const sousChefContract = useSousChef(sousId)
 
-  const handleApprove = useCallback(async () => {
-    try {
-      const tx = await approve(lpContract, sousChefContract, account)
-      dispatch(updateUserAllowance(sousId, account))
-      return tx
-    } catch (e) {
-      return false
-    }
-  }, [account, dispatch, lpContract, sousChefContract, sousId])
+//   const handleApprove = useCallback(async () => {
+//     try {
+//       const tx = await approve(lpContract, sousChefContract, account)
+//       dispatch(updateUserAllowance(sousId, account))
+//       return tx
+//     } catch (e) {
+//       return false
+//     }
+//   }, [account, dispatch, lpContract, sousChefContract, sousId])
 
-  return { onApprove: handleApprove }
-}
+//   return { onApprove: handleApprove }
+// }
 
 // Approve a xMOCHI
 // export const useXApprove = (lpContract: Contract, sousId) => {

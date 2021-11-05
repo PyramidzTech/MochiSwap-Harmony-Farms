@@ -1,5 +1,6 @@
 import BigNumber from 'bignumber.js/bignumber'
 import { BIG_TEN } from 'utils/bigNumber'
+import { ChainId } from '@mochiswap/hsdk'
 
 BigNumber.config({
   EXPONENTIAL_AT: 1000,
@@ -31,6 +32,5 @@ export const MOON_TOKEN_DECIMAL = BIG_TEN.pow(9)
 export const DEFAULT_GAS_LIMIT = 200000
 
 export const BASE_BSC_SCAN_URLS = {
-  [ChainId.MAINNET]: 'https://bscscan.com',
-  [ChainId.TESTNET]: 'https://testnet.bscscan.com',
+  [ChainId.MAINNET]: 'https://explorer.harmony.one',
 }

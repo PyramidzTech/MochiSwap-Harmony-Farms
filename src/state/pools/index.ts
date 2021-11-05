@@ -2,10 +2,13 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import BigNumber from 'bignumber.js'
 import poolsConfig from 'config/constants/pools'
 import { BIG_ZERO } from 'utils/bigNumber'
-import { PoolsState, Pool, CakeVault, VaultFees, VaultUser, AppThunk } from 'state/types'
-import { getPoolApr } from 'utils/apr'
-import { getBalanceNumber } from 'utils/formatBalance'
 import { getAddress } from 'utils/addressHelpers'
+import { getBalanceNumber } from 'utils/formatBalance'
+import { getPoolApr } from 'utils/apr'
+import { PoolsState, Pool, CakeVault, VaultFees, VaultUser, AppThunk } from '../types'
+
+
+
 import { fetchPoolsBlockLimits, fetchPoolsStakingLimits, fetchPoolsTotalStaking } from './fetchPools'
 import {
   fetchPoolsAllowance,

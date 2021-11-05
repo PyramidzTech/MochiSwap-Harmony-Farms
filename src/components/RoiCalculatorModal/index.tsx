@@ -149,7 +149,7 @@ const RoiCalculatorModal: React.FC<RoiCalculatorModalProps> = ({
           <Text color="secondary" bold fontSize="12px" textTransform="uppercase">
             {t('%asset% staked', { asset: stakingTokenSymbol })}
           </Text>
-          <BalanceInput
+          {/* <BalanceInput
             currencyValue={`${conversionValue} ${conversionUnit}`}
             innerRef={balanceInputRef}
             placeholder="0.00"
@@ -158,7 +158,7 @@ const RoiCalculatorModal: React.FC<RoiCalculatorModalProps> = ({
             onUserInput={onUserInput}
             switchEditingUnits={toggleEditingCurrency}
             onFocus={onBalanceFocus}
-          />
+          /> */}
           <Flex justifyContent="space-between" mt="8px">
             <Button
               scale="xs"

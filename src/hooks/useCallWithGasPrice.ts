@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 import ethers, { Contract, CallOverrides } from 'ethers'
-import { useGasPrice } from 'state/user/hooks'
+// import { useGasPrice } from 'state/user/hooks'
 import { get } from 'lodash'
 
 /**
@@ -11,8 +11,10 @@ import { get } from 'lodash'
  * @param overrides An overrides object to pass to the method. gasPrice passed in here will take priority over the price returned by useGasPrice
  * @returns https://docs.ethers.io/v5/api/providers/types/#providers-TransactionReceipt
  */
+
+// disable import/prefer-default-export
 export function useCallWithGasPrice() {
-  const gasPrice = 50; //useGasPrice()
+  const gasPrice = 50; // useGasPrice()
 
   const callWithGasPrice = useCallback(
     async (

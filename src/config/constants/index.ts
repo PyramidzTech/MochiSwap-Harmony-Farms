@@ -1,6 +1,6 @@
 export { default as farmsConfig } from './farms'
 export { default as poolsConfig } from './pools'
-export { default as ifosConfig } from './ifo'
+// export { default as ifosConfig } from './ifo'
 // import { ChainId } from '@mochiswap/hsdk'
 
 // used to construct the list of all pairs we consider by default in the frontend
